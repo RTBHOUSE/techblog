@@ -7,4 +7,65 @@ description: "In the Big Data world, Apache Avro is a popular data serialization
 categories: apache avro
 ---
 
-In the Big Data world, Apache Avro is a popular data serialization system. It provides means to represent rich data structures which can be serialized and deserialized very fast, thanks to the compact binary data format. At RTB House we heavily rely on Avro, using it as the primary format for data circulating over our Ad serving infrastructure.
+In the Big Data world, Apache Avro is a popular data serialization system. It provides means to represent rich data structures which can be serialized and deserialized very fast, thanks to the compact binary data format. At RTB House we heavily rely on Avro, using it as the primary format for data circulating in our Ad serving infrastructure. Due to that fact, we serialize and deserialize hundreds of thousands of Avro records per second.
+
+# Performance issues
+
+In spite of being fast per se, Avro serialization has quickly revealed performance issues in our business scenarios. We discovered that Avro serialization/deserialization routines consume much of CPU time, resulting in heavy loads and reduced throughput. Although at a glance it seemed that through the standard API not much can be done to improve Avro serialization/deserialization efficiency, we quickly started to think about alternative ways to deal with this issue.
+
+A quick research revealed that standard Avro (de)serialization procedure includes schema analysis which determines what to do with each field of Avro record and thus costs some CPU time. An obvious conclusion was that the elimination of schema analysis phase would buy us some additional performance. In order to achieve this, the (de)serialization procedure should "know" how to (de)serialize record without performing schema analysis. The natural way of implementing such feature is to use adequate code, which should orchestrate the underlying low level Avro encoder/decoder according to schema. This would allow to entirely drop the schema analysis phase and to (de)serialize data immediately.
+
+# Our solution
+
+Having this conclusion in mind, our first attempt was to manually write corresponding (de)serialization procedures, what proved the concept to be valid. The sample deserialization Java code written ad hoc turned out to be 4 times faster than standard Avro deserialization facility. Unfortunately, the manual solution was inconvenient and difficult to maintain in general. Whenever the Avro schema changed, the code had to be rewritten and we also had to maintain schema “transition code”, which was responsible for reading old data in compliance with the new schema. Rather quickly the dirty solution became unusable, and in majority of cases we had to fallback to the standard Avro (de)serialization routines. But the seed had been planted, and we started to think about more generic solution.
+
+Shortly thereafter we came up with an idea to generate on demand the code responsible for Avro encoder/decoder orchestration. In case of data serialization it was pretty straightforward, because whole orchestration would depend only on record schema. However in case of deserialization the problem was more complex. Avro `DatumReader` interface implies that data can be read into record of different schema than it was written with. This issue rendered our dirty solution unusable in long term. So we needed something capable of doing expected and actual schema comparison. Fortunately the original implementation of Avro deserialization provides mechanisms to conduct such comparison. The ResolvingGrammarGenerator class can provide a list of symbols which instrument the default data reader on how to deal with possible differences between actual and expected schemas. The most common discrepancies between schemas are removed fields and changed field order. More sophisticated differences include enum values permutations. Some differences of course make schemas incompatible, like the addition of required field without default value in expected schema, thus deserializations are impossible and these cases are also identified by `ResolvingGrammarGenerator`. So we decided to use the standard `ResolvingGrammarGenerator` but we have implemented our own logic interpreting generated schema comparison symbols.
+
+The whole concept of dedicated (de)serializer class generation takes advantage of Java Just-In-Time compilation. Apart from skipping the schema analysis phase, the additional boost of efficiency comes from JIT compilation. As soon as the JVM identifies that a certain method gets executed frequently, its bytecode is scheduled for native compilation. This boosts the performance of the code significantly. At the beginning our solution put all the (de)serialization code in one bulky method. This proved to be valid for shorter records but with longer ones the method became too large (>8k  byte code instructions) hence unsuitable for JIT compilation. Of course one can disable such flag as `-XX:-DontCompileHugeMethods` in the JVM, however this surely will have global impact, which can be detrimental in general. The partial solution to this problem is to generate separate methods for all nested records which the top-level record contains, thus reducing (de)serialization method size. Unfortunately it is still possible to generate record with large amount of primitive, enum or fixed fields which can exceed the JIT method size threshold.
+Once the code is generated it has to be compiled in order to become usable. We decided that the code generation and compilation should occur on demand, whenever the client asks to (de)serialize record with specific schema. The generation and compilation phase take place in parallel thread and until they are not finished, the (de)serialization is done via the standard Avro `DatumReader`/`DatumWriter` implementation. The generated and compiled classes can be then put in a specified directory, so no future compilation would be necessary as the classes can be loaded from the specified filesystem path.
+
+Our solution provides four classes at client disposal, depending on a desired action: `FastGenericDatumReader`, `FastSpecificDatumReader`, `FastGenericDatumWriter`, `FastSpecificDatumWriter`. These class names are self-explanatory. The basic usage is similar to standard implementation of `DatumReader`/`DatumWriter`. An additional configuration is possible via `FastSerdeCache` class, which main purpose is to schedule compilation and hold references for compiled  (de)serializer classes.
+
+You can go and grab our implementation at: [github.com/RTBHOUSE/avro-fastserde](https://github.com/RTBHOUSE/avro-fastserde)
+
+# Benchmarks
+
+Lets look how does our implementation of DatumReader and DatumWriter interfaces compare to the standard one. For this purpose we have prepared corresponding benchmarks. All of them were executed using [JMH Framework](http://openjdk.java.net/projects/code-tools/jmh/) to provide trustworthy microbenchmarking environment. All benchmarks were executed on a 2.5 GHz Core i7 (Haswell) machine with 16 GB of memory.
+
+Each benchmark method makes exactly 1000 reads or writes for specific kind of records with the JMH framework measuring throughput.
+
+The first benchmark operates on our internal, real life schema, which consists of 25 nested records with variable number of solely union type of fields resulting in total of about 600.
+
+<img src="/pics/reading-internal.svg" style="width: 49%;"/>
+<img src="/pics/writing-internal.svg" style="width: 49%;"/>
+
+Obviously our solution has improved the throughput more than twofold in case of generic data deserialization and quadrupled the performance in case of specific data deserialization. In case of data serialization the results are even more impressive. Our specific data serialization is almost five times faster than its native counterpart.
+
+The next benchmarks operate on non real life record schemas, which were randomly generated but conform to the following criteria:
+- number of fields (**small**: 10 fields, **large**: 100 fields)
+- depth - meaning the maximal level of record nesting (**flat**: no nested records, **deep**: 3 levels of nested records)
+- record fields can be of any Avro type including unions, arrays and maps.
+
+Below are the results:
+
+<img src="/pics/reading-flatandsmall.svg" style="width: 49%;"/>
+<img src="/pics/writing-flatandsmall.svg" style="width: 49%;"/>
+<img src="/pics/reading-deepandsmall.svg" style="width: 49%;"/>
+<img src="/pics/writing-deepandsmall.svg" style="width: 49%;"/>
+<img src="/pics/reading-flatandlarge.svg" style="width: 49%;"/>
+<img src="/pics/writing-flatandlarge.svg" style="width: 49%;"/>
+<img src="/pics/reading-deepandlarge.svg" style="width: 49%;"/>
+<img src="/pics/writing-deepandlarge.svg" style="width: 49%;"/>
+
+In general, the above charts reveal that our solution tends to be about 50% faster than its native counterpart. Both `DatumReader`'s and `DatumWriter`'s manifest the same tendency, but in some cases our implementation for the specific data is two times faster than the native one.
+
+But why our implementation performs much better on the real-life schema than on the generated ones? The answer is the Avro union type, which requires an additional designation of subject data type. Below is the complementary benchmark, which shows what happens if we force all fields of “small” and “deep” record to be of union type.
+
+<img src="/pics/reading-onlyunion.svg" style="width: 49%;"/>
+<img src="/pics/writing-onlyunion.svg" style="width: 49%;"/>
+
+Clearly, the results are similar to those of our real-life schema, with our solution being at least two times faster.
+
+In order to have clear view on your particular scenario, we encourage to benchmark against your own schemas, as the results may vary depending on the structure of records, especially if you leverage the union type in your schemas. Generally, we may assume that records consisting of many nested records with fairly limited number of fields will perform better than larger and relatively “flat” records.
+
+To recap, if you process a lot of Avro records in your scenario its worth to give avro-fastserde a try, as you may expect a significant boost of processing performance.

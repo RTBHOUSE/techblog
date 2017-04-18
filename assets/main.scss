@@ -2,6 +2,16 @@
 ---
 @import "minima";
 
+@mixin media-query($device) {
+  @media screen and (max-width: $device) {
+    @content;
+  }
+}
+
+@mixin relative-font-size($ratio) {
+  font-size: $base-font-size * $ratio;
+}
+
 .rtb-title {
   @include relative-font-size(1.625);
   font-weight: 300;

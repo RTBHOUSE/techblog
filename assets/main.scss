@@ -1,0 +1,32 @@
+---
+---
+@import "minima";
+
+.rtb-title {
+  @include relative-font-size(1.625);
+  font-weight: 300;
+  line-height: $base-line-height * $base-font-size * 2.25;
+  letter-spacing: -1px;
+  margin-bottom: 0;
+  float: left;
+  &,
+  &:visited,
+  &:hover {
+    color: $grey-color-dark;
+    text-decoration: none;
+  }
+}
+
+.post-link {
+  display: block;
+  @include relative-font-size(1.5);
+  margin-bottom: -15px
+}
+
+.logoRed {
+  color:red;
+}
+.logoVelvet {
+  color:#422845;
+  font-weight:bold;
+}

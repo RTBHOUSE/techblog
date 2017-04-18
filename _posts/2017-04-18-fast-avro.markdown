@@ -1,0 +1,10 @@
+---
+layout: post
+title:  "Our approach to Fast Avro serialization and deserialization in JVM"
+date:   2017-04-18 14:31:18 +0200
+author: Piotr Jaczewski <piotr.jaczewski@rtbhouse.com>
+description: "In the Big Data world, Apache Avro is a popular data serialization system. It provides means to represent rich data structures which can be serialized and deserialized very fast, thanks to the compact binary data format. At RTB House we heavily rely on Avro, using it as the primary format for data circulating over our Ad serving infrastructure."
+categories: apache avro
+---
+
+In the Big Data world, Apache Avro is a popular data serialization system. It provides means to represent rich data structures which can be serialized and deserialized very fast, thanks to the compact binary data format. At RTB House we heavily rely on Avro, using it as the primary format for data circulating over our Ad serving infrastructure.

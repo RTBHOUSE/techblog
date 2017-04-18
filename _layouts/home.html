@@ -1,0 +1,27 @@
+---
+layout: default
+---
+
+<div class="home">
+
+
+  {{ content }}
+
+  <ul class="post-list">
+    {% for post in site.posts %}
+      <li>
+        {% assign date_format = site.minima.date_format | default: "%b %-d, %Y" %}
+        <span class="post-meta">{{ post.date | date: date_format }}</span>
+
+        <h2>
+          <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
+          {% if post.author %}
+          <span class="post-meta">by {{ post.author }}</span>
+          {% endif %}
+        </h2>
+        {{ post.description }}
+      </li>
+    {% endfor %}
+  </ul>
+
+</div>

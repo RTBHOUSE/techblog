@@ -1,9 +1,9 @@
 title: RTB House Tech Blog
-email: your-email@domain.com
+email: rtbhouse@rtbhouse.com
 description: > #
-  RTB House technical blog
-baseurl: "/techblog" # the subpath of your site, e.g. /blog
-url: "https://rtbhouse.github.io" # the base hostname & protocol for your site, e.g. http://example.com
+  RTB House Technical Blog
+baseurl: ""
+url: "http://techblog.rtbhouse.com" #
 twitter_username: rtbhouse
 github_username:  rtbhouse
 

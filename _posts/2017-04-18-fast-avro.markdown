@@ -1,13 +1,13 @@
 ---
 layout: post
-title:  "Our approach to Fast Avro serialization and deserialization in JVM"
+title:  "Our approach to fast Avro serialization and deserialization in JVM"
 date:   2017-04-18 14:31:18 +0200
 author: Piotr Jaczewski <piotr.jaczewski@rtbhouse.com>
-description: "In the Big Data world, Apache Avro is a popular data serialization system. It provides means to represent rich data structures which can be serialized and deserialized very fast, thanks to the compact binary data format. At RTB House we heavily rely on Avro, using it as the primary format for data circulating over our Ad serving infrastructure."
+description: "In the Big Data world, Apache Avro is a popular data serialization system. It provides means to represent rich data structures which can be serialized and deserialized very fast, thanks to the compact binary data format. At RTB House we heavily rely on Avro, using it as the primary format for data circulating in our Ad serving infrastructure."
 categories: apache avro
 ---
 
-In the Big Data world, Apache Avro is a popular data serialization system. It provides means to represent rich data structures which can be serialized and deserialized very fast, thanks to the compact binary data format. At RTB House we heavily rely on Avro, using it as the primary format for data circulating in our Ad serving infrastructure. Due to that fact, we serialize and deserialize hundreds of thousands of Avro records per second.
+In the Big Data world, [Apache Avro](https://avro.apache.org/) is a popular data serialization system. It provides means to represent rich data structures which can be serialized and deserialized very fast, thanks to the compact binary data format. At RTB House we heavily rely on Avro, using it as the primary format for data circulating in our Ad serving infrastructure. Due to that fact, we serialize and deserialize hundreds of thousands of Avro records per second.
 
 # Performance issues
 
@@ -34,14 +34,14 @@ Lets look how does our implementation of DatumReader and DatumWriter interfaces 
 
 Each benchmark method makes exactly 1000 reads or writes for specific kind of records with the JMH framework measuring throughput.
 
-The first benchmark operates on our internal, real life schema, which consists of 25 nested records with variable number of solely union type of fields resulting in total of about 600.
+The first benchmark operates on our internal, real-life schema, which consists of 25 nested records with variable number of solely union type of fields resulting in total of about 600.
 
 <img src="/pics/reading-internal.svg" style="width: 49%;"/>
 <img src="/pics/writing-internal.svg" style="width: 49%;"/>
 
 Obviously our solution has improved the throughput more than twofold in case of generic data deserialization and quadrupled the performance in case of specific data deserialization. In case of data serialization the results are even more impressive. Our specific data serialization is almost five times faster than its native counterpart.
 
-The next benchmarks operate on non real life record schemas, which were randomly generated but conform to the following criteria:
+The next benchmarks operate on non real-life record schemas, which were randomly generated but conform to the following criteria:
 - number of fields (**small**: 10 fields, **large**: 100 fields)
 - depth - meaning the maximal level of record nesting (**flat**: no nested records, **deep**: 3 levels of nested records)
 - record fields can be of any Avro type including unions, arrays and maps.

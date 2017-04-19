@@ -30,7 +30,7 @@ You can go and grab our implementation at: [github.com/RTBHOUSE/avro-fastserde](
 
 # Benchmarks
 
-Lets look how does our implementation of DatumReader and DatumWriter interfaces compare to the standard one. For this purpose we have prepared corresponding benchmarks. All of them were executed using [JMH Framework](http://openjdk.java.net/projects/code-tools/jmh/) to provide trustworthy microbenchmarking environment. All benchmarks were executed on a 2.5 GHz Core i7 (Haswell) machine with 16 GB of memory.
+Lets look how does our implementation of `DatumReader` and `DatumWriter` interfaces compare to the standard one. For this purpose we have prepared corresponding benchmarks. All of them were executed using [JMH Framework](http://openjdk.java.net/projects/code-tools/jmh/) to provide trustworthy microbenchmarking environment. All benchmarks were executed on a 2.5 GHz Core i7 (Haswell) machine with 16 GB of memory.
 
 Each benchmark method makes exactly 1000 reads or writes for specific kind of records with the JMH framework measuring throughput.
 

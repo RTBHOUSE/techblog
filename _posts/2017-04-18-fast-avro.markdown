@@ -2,9 +2,9 @@
 layout: post
 title:  "Our approach to fast Avro serialization and deserialization in JVM"
 date:   2017-04-18 14:31:18 +0200
+subtitle: "Check out how we improved the Apache Avro processing performance."
 author: Piotr Jaczewski <piotr.jaczewski@rtbhouse.com>
-description: "In the Big Data world, Apache Avro is a popular data serialization system. It provides means to represent rich data structures which can be serialized and deserialized very fast, thanks to the compact binary data format. At RTB House we heavily rely on Avro, using it as the primary format for data circulating in our Ad serving infrastructure."
-categories: apache avro
+image: "img/home-bg.jpg"
 ---
 
 In the Big Data world, [Apache Avro](https://avro.apache.org/) is a popular data serialization system. It provides means to represent rich data structures which can be serialized and deserialized very fast, thanks to the compact binary data format. At RTB House we heavily rely on Avro, using it as the primary format for data circulating in our Ad serving infrastructure. Due to that fact, we serialize and deserialize hundreds of thousands of Avro records per second.
@@ -36,18 +36,8 @@ Each benchmark method makes exactly 1000 reads or writes for specific kind of re
 
 The first benchmark operates on our internal, real-life schema, which consists of 25 nested records with variable number of solely union type of fields resulting in total of about 600.
 
-<div>
-  <img id="ri" class="img" src="/pics/reading-internal.svg" style="width: 49%;" onload="modal('ri', 'riModal')"/>
-  <div id="riModal" class="modal">
-    <span class="close">&times;</span>
-    <img class="modal-content">
-  </div>
-  <img id="wi" class="img" src="/pics/writing-internal.svg" style="width: 49%;" onload="modal('wi', 'wiModal')"/>
-  <div id="wiModal" class="modal">
-    <span class="close">&times;</span>
-    <img class="modal-content">
-  </div>
-</div>
+  <img class="img" src="/pics/reading-internal.svg" style="display: inline; width: 49%;"/>
+  <img class="img" src="/pics/writing-internal.svg" style="display: inline; width: 49%;"/>
 
 Obviously our solution has improved the throughput more than twofold in case of generic data deserialization and quadrupled the performance in case of specific data deserialization. In case of data serialization the results are even more impressive. Our specific data serialization is almost five times faster than its native counterpart.
 
@@ -58,71 +48,21 @@ The next benchmarks operate on non real-life record schemas, which were randomly
 
 Below are the results:
 
-<div>
-  <img id="rfs" class="img" src="/pics/reading-flatandsmall.svg" style="width: 49%;" onload="modal('rfs', 'rfsModal')"/>
-  <div id="rfsModal" class="modal">
-    <span class="close">&times;</span>
-    <img class="modal-content">
-  </div>
-  <img id="wfs" class="img" src="/pics/writing-flatandsmall.svg" style="width: 49%;" onload="modal('wfs', 'wfsModal')"/>
-  <div id="wfsModal" class="modal">
-    <span class="close">&times;</span>
-    <img class="modal-content">
-  </div>
-</div>
-<div>
-  <img id="rds" class="img" src="/pics/reading-deepandsmall.svg" style="width: 49%;" onload="modal('rds', 'rdsModal')"/>
-  <div id="rdsModal" class="modal">
-    <span class="close">&times;</span>
-    <img class="modal-content">
-  </div>
-  <img id="wds" class="img" src="/pics/writing-deepandsmall.svg" style="width: 49%;" onload="modal('wds', 'wdsModal')"/>
-  <div id="wdsModal" class="modal">
-    <span class="close">&times;</span>
-    <img class="modal-content">
-  </div>
-</div>
-<div>
-  <img id="rfl" class="img" src="/pics/reading-flatandlarge.svg" style="width: 49%;" onload="modal('rfl', 'rflModal')"/>
-  <div id="rflModal" class="modal">
-    <span class="close">&times;</span>
-    <img class="modal-content">
-  </div>
-  <img id="wfl" class="img" src="/pics/writing-flatandlarge.svg" style="width: 49%;" onload="modal('wfl', 'wflModal')"/>
-  <div id="wflModal" class="modal">
-    <span class="close">&times;</span>
-    <img class="modal-content">
-  </div>
-</div>
-<div>
-  <img id="rdl" class="img" src="/pics/reading-deepandlarge.svg" style="width: 49%;" onload="modal('rdl', 'rdlModal')"/>
-  <div id="rdlModal" class="modal">
-    <span class="close">&times;</span>
-    <img class="modal-content">
-  </div>
-  <img id="wdl" class="img" src="/pics/writing-deepandlarge.svg" style="width: 49%;" onload="modal('wdl', 'wdlModal')"/>
-  <div id="wdlModal" class="modal">
-    <span class="close">&times;</span>
-    <img class="modal-content">
-  </div>
-</div>
+  <img class="img" src="/pics/reading-flatandsmall.svg" style="display: inline; width: 49%;"/>
+  <img class="img" src="/pics/writing-flatandsmall.svg" style="display: inline; width: 49%;"/>
+  <img class="img" src="/pics/reading-deepandsmall.svg" style="display: inline; width: 49%;"/>
+  <img class="img" src="/pics/writing-deepandsmall.svg" style="display: inline; width: 49%;"/>
+  <img class="img" src="/pics/reading-flatandlarge.svg" style="display: inline; width: 49%;"/>
+  <img class="img" src="/pics/writing-flatandlarge.svg" style="display: inline; width: 49%;"/>
+  <img class="img" src="/pics/reading-deepandlarge.svg" style="display: inline; width: 49%;"/>
+  <img class="img" src="/pics/writing-deepandlarge.svg" style="display: inline; width: 49%;"/>
 
 In general, the above charts reveal that our solution tends to be about 50% faster than its native counterpart. Both `DatumReader`'s and `DatumWriter`'s manifest the same tendency, but in some cases our implementation for the specific data is two times faster than the native one.
 
 But why our implementation performs much better on the real-life schema than on the generated ones? The answer is the Avro union type, which requires an additional designation of subject data type. Below is the complementary benchmark, which shows what happens if we force all fields of “small” and “deep” record to be of union type.
 
-<div>
-  <img id="ru" class="img" src="/pics/reading-onlyunion.svg" style="width: 49%;" onload="modal('ru', 'ruModal')"/>
-  <div id="ruModal" class="modal">
-    <span class="close">&times;</span>
-    <img class="modal-content">
-  </div>
-  <img id="wu" class="img" src="/pics/writing-onlyunion.svg" style="width: 49%;" onload="modal('wu', 'wuModal')"/>
-  <div id="wuModal" class="modal">
-    <span class="close">&times;</span>
-    <img class="modal-content">
-  </div>
-</div>
+  <img class="img" src="/pics/reading-onlyunion.svg" style="display: inline; width: 49%;"/>
+  <img class="img" src="/pics/writing-onlyunion.svg" style="display: inline; width: 49%;"/>
 
 Clearly, the results are similar to those of our real-life schema, with our solution being at least two times faster.
 

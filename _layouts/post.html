@@ -1,25 +1,55 @@
 ---
 layout: default
 ---
-<script src="/assets/img.js"></script>
-<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
-  <header class="post-header">
-    <h1 class="post-title" itemprop="name headline">{{ page.title | escape }}</h1>
-    <p class="post-meta">
-      <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
-        {% assign date_format = site.minima.date_format | default: "%b %-d, %Y" %}
-        {{ page.date | date: date_format }}
-      </time>
-      {% if page.author %}
-        • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{{ page.author }}</span></span>
-      {% endif %}</p>
-  </header>
 
-  <div class="post-content" itemprop="articleBody">
-    {{ content }}
-  </div>
+<!-- Post Header -->
+<header class="intro-header" style="background-image: url('{{ site.baseurl }}/{% if page.image %}{{ page.image }}{% else %}{{ site.image }}{% endif %}')">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12 col-md-12">
+				<div class="post-heading">
+					<h1>{{ page.title }}</h1>
+					{% if page.subtitle %}
+					<h2 class="subheading">{{ page.subtitle }}</h2>
+					{% endif %}
+					<span class="meta">Posted by {% if page.author %}{{ page.author }}{% else %}{{ site.title }}{% endif %} on {{ page.date | date: "%B %-d, %Y" }}</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</header>
 
-  {% if site.disqus.shortname %}
-    {% include disqus_comments.html %}
-  {% endif %}
+<!-- Post Content -->
+<article>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12 col-md-12">
+				<!-- Begin post content -->
+				{{ content }}
+				<!-- End post content -->
+				{% if page.modified %}
+				<p class="text-right update-note"><small class="text-muted">Updated on {{ page.modified | date:"%d/%m/%Y" }}.</small></p>
+				{% endif %}
+				<hr>
+
+				<ul class="pager">
+					{% if page.previous.url %}
+					<li class="previous">
+						<a href="{{ page.previous.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip" data-placement="top" title="{{page.previous.title}}">&larr; Previous Post</a>
+					</li>
+					{% endif %}
+					{% if page.next.url %}
+					<li class="next">
+						<a href="{{ page.next.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip" data-placement="top" title="{{page.next.title}}">Next Post &rarr;</a>
+					</li>
+					{% endif %}
+				</ul>
+
+			</div>
+		</div>
+	</div><!-- /.container -->
+
+<!-- 	{% include disqus.html %} -->
 </article>
+
+<hr>

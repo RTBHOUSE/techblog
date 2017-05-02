@@ -1,17 +1,34 @@
-title: RTB House Tech Blog
-email: rtbhouse@rtbhouse.com
-description: > #
-  RTB House Technical Blog
+# Site settings
+title: Technical Blog
+image: img/home-bg.jpg
+logo: img/favicon.png
+email: piotr.jaczewski@rtbhouse.com
+description: "This is the RTB House Technical Blog. We publish here news and information about our projects, which we would like to share to the public."
 baseurl: ""
-url: "http://techblog.rtbhouse.com" #
+author: "Piotr Jaczewski"
+url: ""
 twitter_username: rtbhouse
-github_username:  rtbhouse
+github_username: RTBHOUSE
+facebook_username: RTBHouse
+gaid: UA-XXXXX-X
+disqus_site_id: ""
+copyright_name: RTB HOUSE
+
+# Plugins
+gems:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-paginate
+  - jekyll-seo-tag
 
 # Build settings
 markdown: kramdown
-theme: minima
-gems:
-  - jekyll-feed
-exclude:
-  - Gemfile
-  - Gemfile.lock
+kramdown:
+  input: GFM
+highlighter: rouge
+safe: false # safe need to be off for local preview
+lsi: false
+permalink: pretty
+paginate: 5
+exclude: ["sass","node_modules","Gruntfile.js","package.json","README.md"]
+keep_files: []

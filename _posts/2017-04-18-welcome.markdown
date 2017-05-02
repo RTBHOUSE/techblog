@@ -2,8 +2,8 @@
 layout: post
 title:  "Welcome to our blog!"
 date:   2017-04-18 13:31:18 +0200
-categories: welcome rtbhouse
-author: RTB House Team
+author: RTB House IT Team
+image: "img/home-bg.jpg"
 ---
 
 Welcome to our technical blog. We will post here information about interesting projects we are currently working on and using at our company. Stay tuned for more to come!

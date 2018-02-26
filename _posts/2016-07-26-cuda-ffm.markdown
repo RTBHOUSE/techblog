@@ -1,0 +1,27 @@
+---
+layout: post
+title:  "CUDA FFM – 50-70x faster training"
+date:   2016-07-26 14:05:00 +0200
+subtitle: "Field-aware Factorization Machines on CUDA."
+author: Bartłomiej Romański <bartlomiej.romanski@rtbhouse.com>
+image: "img/home-bg.jpg"
+---
+
+Today we're open-sourcing <a href="https://github.com/RTBHOUSE/cuda-ffm">CUDA FFM</a> – our tool for very fast FFM training and inference.
+
+You can expect **50-70x speed up in training** (comparing to the CPU implementation) and **5-10x speed up in inference** (compaing to non-AVX-optimized implementation).
+
+What's inside?
+
+ * very fast FFM trainer that trains FFM model using GPU
+   * very fast FFM prediction C++ library (using CPU)
+ * Java bindings to that library (via JNI)
+ * few dataset management utils (splitting, shuffling, conversion)
+
+Field-aware Factorization Machines (FFM) is a machine learning model described by the following equation:
+
+<img src="/pics/simplified_ffm_y.png">
+
+Checkout out the original <a href="http://www.csie.ntu.edu.tw/~cjlin/papers/ffm.pdf">paper</a> for the details or our <a href="https://github.com/RTBHOUSE/cuda-ffm#ffm-formulation">README</a> for a quick summary.
+
+

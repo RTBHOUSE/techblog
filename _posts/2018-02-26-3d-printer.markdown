@@ -1,0 +1,23 @@
+---
+layout: post
+title:  "See our 3D printer LIVE"
+date:   2017-06-02 14:05:00 +0200
+subtitle: "Live-streaming from our office hackerspace."
+author: Bartłomiej Romański <bartlomiej.romanski@rtbhouse.com>
+image: "img/home-bg.jpg"
+---
+
+Ladies and gentlemen, here it is! Our pet project:
+
+<img src="http://104.155.95.218/">
+
+Please be aware that in contrast to the production services we work on everyday this service has some unique features:
+
+  * no scalability at all
+  * target availability = 20%
+  * extreamly low perfomance
+
+We're streaming with an old laptop using some very outdated technologies.
+
+Weird problems and long periods of downtime are more than expected!
+

@@ -1,0 +1,26 @@
+---
+layout: post
+title:  "Our user2vec at ICML 2016"
+date:   2016-06-25 14:05:00 +0200
+subtitle: "User modeling using LSTM networks."
+author: Bartłomiej Romański <bartlomiej.romanski@rtbhouse.com>
+image: "img/deeplearning-bg.jpg"
+---
+
+We've just published **user2vec** – our approach to user modeling with LSTM networks.
+
+The work was presented by Konrad Żołna during <a href="https://sites.google.com/site/admlsystemsworkshop/home">Online Advertising Systems Workshop</a>, a part of <a href="https://icml.cc/2016/index.html">ICML 2016</a> in New York.
+
+Here's the quick visualisation of the main idea:
+
+<img src="/pics/user2vec-model.png">
+
+And here's the abstract:
+
+> The LSTM model presented is capable of describing a user of a particular website without human expert supervision. In other words,
+the model is able to automatically craft features which depict attitude, intention and the overall state of a user. This effect is achieved by projecting the complex history of the user (sequence data corresponding to his actions on the website) into fixed sized vectors of real numbers. The representation obtained may be used to enrich typical models used in RTB: click-through rate (CTR), conversion rate (CR) etc.
+>
+> The enriched CR model is capable of learning from wider data since it indirectly analyzes all actions of an advertiser’s website users, not only those users who clicked on an ad.
+
+Check out the <a href="/files/user2vec-slides.pdf">slides</a> and the full <a href="/files/user2vec-user-modeling-using-lstm.pdf">paper</a> for all the details!
+

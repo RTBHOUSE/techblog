@@ -1,7 +1,7 @@
 # Site settings
 title: Technical Blog
 image: img/home-bg.jpg
-logo: img/favicon.png
+logo: img/fav1.png
 email: piotr.jaczewski@rtbhouse.com
 description: "This is the RTB House Technical Blog. We publish here news and information about our projects, which we would like to share to the public."
 baseurl: ""
@@ -29,6 +29,6 @@ highlighter: rouge
 safe: false # safe need to be off for local preview
 lsi: false
 permalink: pretty
-paginate: 5
+paginate: 20
 exclude: ["sass","node_modules","Gruntfile.js","package.json","README.md"]
 keep_files: []

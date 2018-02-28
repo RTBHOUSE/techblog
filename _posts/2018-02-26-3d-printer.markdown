@@ -15,7 +15,7 @@ Please be aware that in contrast to the production services we work on everyday 
 
   * no scalability at all
   * target availability = 20%
-  * extreamly low perfomance
+  * extremely low perfomance
 
 We're streaming with an old laptop using some very outdated technologies.
 

@@ -4,6 +4,10 @@ title:  "Welcome to our blog!"
 date:   2016-05-18 13:31:18 +0200
 author: RTB House IT
 image: "img/home-bg.jpg"
+
+subtitle:    ""
+description: "Projects we’re currently working on, thoughts on things we tried, research results etc…"
+excerpt:     "Projects we’re currently working on, thoughts on things we tried, research results etc…"
 ---
 
 Welcome to our technical blog. We'll post here information about all the cool stuff we're doing in our team: projects we're currently working on, thoughts on things we tried, research results etc...

@@ -1,9 +1,9 @@
 # Site settings
-title: Technical Blog
+title: RTB House Technical Blog
 image: img/home-bg.jpg
 logo: img/fav1.png
 email: piotr.jaczewski@rtbhouse.com
-description: "This is the RTB House Technical Blog. We publish here news and information about our projects, which we would like to share to the public."
+description: "Projects we’re currently working on, thoughts on things we tried, research results etc…"
 baseurl: ""
 author: "Piotr Jaczewski"
 url: ""

@@ -2,9 +2,12 @@
 layout: post
 title:  "Meet us at AAAI-2017 in San Francisco"
 date:   2017-01-27 14:05:00 +0200
-subtitle: "The Thirty-First AAAI Conference on Artificial Intelligence."
 author: Bartłomiej Romański <bartlomiej.romanski@rtbhouse.com>
 image: "img/deeplearning-bg.jpg"
+
+subtitle:    "The Thirty-First AAAI Conference on Artificial Intelligence."
+description: "The Thirty-First AAAI Conference on Artificial Intelligence."
+excerpt:     "The Thirty-First AAAI Conference on Artificial Intelligence."
 ---
 
 I'm happy to annouced that our college, Konrad Żołna will be presenting his work during <a href="https://www.aaai.org/Conferences/AAAI/aaai17.php">The Thirty-First AAAI Conference on Artificial Intelligence</a>. Come and see what we've been working on at RTB House recently!

@@ -2,9 +2,12 @@
 layout: post
 title:  "Improving the performance of neural networks in regression tasks using drawering"
 date:   2017-05-01 14:05:00 +0200
-subtitle: "See our recent work at IJCNN 2017 in Anchorage, Alaska, USA."
 author: Bartłomiej Romański <bartlomiej.romanski@rtbhouse.com>
 image: "img/deeplearning-bg.jpg"
+
+subtitle:    "See our recent work at IJCNN 2017 in Anchorage, Alaska, USA."
+description: "See our recent work at IJCNN 2017 in Anchorage, Alaska, USA."
+excerpt:     "See our recent work at IJCNN 2017 in Anchorage, Alaska, USA."
 ---
 
 **drawering** – our newest idea for improving the performance of neural networks in regression tasks will be presented during <a href="http://www.ijcnn.org/">The 2017 International Joint Conference on Neural Networks</a> in in Anchorage, Alaska, USA.

@@ -1,22 +1,18 @@
 ---
 layout: page
 title: "Search"
-subtitle: "A full text search made use of Google Site search"
-description: "A full text search made use of Google Site search"
 image: "img/home-bg.jpg"
 ---
 
-<!-- A demo search page using Google Custom Engine. Set your own CSE's id at cx variable-->
 <script>
   (function() {
-	var cx = '004300464989862774725:tqbvyjnus8q'; // my blog
-	var gcse = document.createElement('script');
-	gcse.type = 'text/javascript';
-	gcse.async = true;
-	gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
-		'//cse.google.com/cse.js?cx=' + cx;
-	var s = document.getElementsByTagName('script')[0];
-	s.parentNode.insertBefore(gcse, s);
+    var cx = '016670120925124332863:hxq8oi1c4jq';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
   })();
 </script>
 <gcse:search></gcse:search>

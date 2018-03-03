@@ -2,9 +2,12 @@
 layout: post
 title:  "CUDA FFM – 50-70x faster training"
 date:   2016-07-26 14:05:00 +0200
-subtitle: "Field-aware Factorization Machines on CUDA."
 author: Bartłomiej Romański <bartlomiej.romanski@rtbhouse.com>
 image: "img/home-bg.jpg"
+
+subtitle:    "Field-aware Factorization Machines on CUDA."
+description: "Field-aware Factorization Machines on CUDA."
+excerpt:     "Field-aware Factorization Machines on CUDA."
 ---
 
 Today we're open-sourcing <a href="https://github.com/RTBHOUSE/cuda-ffm">CUDA FFM</a> – our tool for very fast FFM training and inference.

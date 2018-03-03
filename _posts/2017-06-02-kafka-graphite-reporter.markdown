@@ -2,9 +2,12 @@
 layout: post
 title:  "Kafka Graphite Reporter"
 date:   2017-06-02 14:05:00 +0200
-subtitle: "Open-sourcing a simple tool for Apache Kafka monitoring."
 author: Bartłomiej Romański <bartlomiej.romanski@rtbhouse.com>
 image: "img/home-bg.jpg"
+
+subtitle:    "Open-sourcing a simple tool for Apache Kafka monitoring."
+description: "Open-sourcing a simple tool for Apache Kafka monitoring."
+excerpt:     "Open-sourcing a simple tool for Apache Kafka monitoring."
 ---
 
 Check out our new mini-poject: <a href="https://github.com/RTBHOUSE/kafka-graphite-reporter">Kafka Graphite Reporter</a>.

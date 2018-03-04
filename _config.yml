@@ -29,6 +29,6 @@ highlighter: rouge
 safe: false # safe need to be off for local preview
 lsi: false
 permalink: pretty
-paginate: 20
+paginate: 10
 exclude: ["sass","node_modules","Gruntfile.js","package.json","README.md"]
 keep_files: []

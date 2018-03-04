@@ -23,11 +23,11 @@ image: "img/home-bg.jpg"
 <strong><p>Questions about salary, team, work style etc...?</p></strong>
 
 <p>
-Check our new <a href="/files/FAQ.pdf">FAQ for candidates</a>!
+Check our new <a href="/files/FAQ.pdf" class="rtbtrack">FAQ for candidates</a>!
 </p>
 
 <p class="faq-preview">
-    <a href="/files/FAQ.pdf">
+    <a href="/files/FAQ.pdf" class="rtbtrack">
         <img src="/img/faq-0.png">
         <img src="/img/faq-4.png">
     </a>
@@ -36,15 +36,41 @@ Check our new <a href="/files/FAQ.pdf">FAQ for candidates</a>!
 <strong><p>Right now, we're looking for:</p></strong>
 
 <ul>
-  <li><a href="/files/distributed-systems-engineer.pdf">Distributed Systems Engineer</a>
-  <li><a href="/files/big-data-engineer.pdf">Big Data Engineer</a>
-  <li><a href="/files/data-scientist.pdf">Data Scientist</a>
-  <li><a href="/files/full-stack-developer.pdf">Full Stack Developer</a>
-  <li><a href="/files/system-administrator.pdf">System Administrator</a>
+  <li><a href="/files/distributed-systems-engineer.pdf" class="rtbtrack">Distributed Systems Engineer</a>
+  <li><a href="/files/big-data-engineer.pdf" class="rtbtrack">Big Data Engineer</a>
+  <li><a href="/files/data-scientist.pdf" class="rtbtrack">Data Scientist</a>
+  <li><a href="/files/full-stack-developer.pdf" class="rtbtrack">Full Stack Developer</a>
+  <li><a href="/files/system-administrator.pdf" class="rtbtrack">System Administrator</a>
 </ul>
 
 <p>Interested? Email us at: <a href="mailto:it-jobs@rtbhouse.com">it-jobs@rtbhouse.com</a>!</p>
 
 <p>Or check other teams on our <a href="https://www.rtbhouse.com/career">company career page</a>.</p>
 
+<div id="rtbtags">
+    <iframe src="//creativecdn.com/tags?id=pr_WC3Yr50bXsHUvJdIpgtR_basket" style="display: none;"></iframe>
+</div>
+
+<script>
+    var tags = document.getElementById('rtbtags');
+    var x = document.getElementsByClassName('rtbtrack');
+
+    for (var i = 0; i < x.length; i++) {
+        console.log(x[i]);
+        x[i].addEventListener('click', function(e) {
+            var l = this.getAttribute('href').replace(/^.*\//, '');
+
+            var f = document.createElement('iframe');
+            f.src = '//creativecdn.com/tags?id=pr_WC3Yr50bXsHUvJdIpgtR_orderstatus_1_' + l;
+            f.style.display = 'none';
+            tags.appendChild(f);
+
+            var that = this;
+            setTimeout(function() {
+                document.location = that.href;
+            }, 100);
+            e.preventDefault();
+        })
+    }
+</script>
 

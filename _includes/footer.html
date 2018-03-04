@@ -43,7 +43,7 @@
 					</li>
 					{% endif %}
 				</ul>
-                <p class="copyright text-muted">Copyright &copy; {{ site.copyright_name }} {{ site.time | date: '%Y' }}</p>
+                <p class="copyright text-muted">Copyright &copy; {{ site.copyright_name }} {{ site.time | date: '%Y' }} | <a href="https://www.rtbhouse.com/privacy/">Privacy Policy</a></p>
 			</div>
 		</div>
 	</div>
@@ -79,3 +79,6 @@
 <script src="{{ "/js/scripts.js " | prepend: site.baseurl }}"></script>
 
 {% include analytics.html %}
+
+{% include cookies.html %}
+

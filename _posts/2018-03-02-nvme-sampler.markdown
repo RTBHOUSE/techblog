@@ -10,7 +10,7 @@ description: "Random batch generation at 6 GB/s (or 5M records/s)."
 excerpt:     "Random batch generation at 6 GB/s (or 5M records/s)."
 ---
 
-Tired of shuffling your learning data each and every epoch? You need to check this out!
+Tired of shuffling your learning data each and every epoch? You really need to check this out!
 
 Paweł from our <a href="/jobs/">data science team</a> just open-sourced his <a href="https://github.com/RTBHOUSE/nvme_sampler">NVMe Sampler</a> – a library we use at RTB House while training our <a href="http://pytorch.org/">PyTorch</a> models. With a bunch of NVMe drives, libaio and some black performance magic this little tool can generate random batches for you with the astonishing speed – over **6 GB/s** (or **5M records/s**).
 

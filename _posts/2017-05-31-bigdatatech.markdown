@@ -16,6 +16,6 @@ A little teaser:
 
 <img src="/img/bigdatatech.png" style="position: relative; top:-20px;">
 
-EDIT: <a href="/files/bigdatatech.pdf">Slides</a> from the presentation have just been published.
+EDIT: <a href="/files/bigdatatech.pdf">Slides</a> from the presentation and <a href="/2017/06/15/data-flow/">post</a> on this topic have just been published.
 
 

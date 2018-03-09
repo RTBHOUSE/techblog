@@ -5,9 +5,9 @@ date:   2017-05-31 14:05:00 +0200
 author: Bartłomiej Romański <bartlomiej.romanski@rtbhouse.com>
 image: "img/home-bg.jpg"
 
-subtitle:    "Real-Time Data Processing at RTB House – Architecture & Lessons Learned"
-description: "Real-Time Data Processing at RTB House – Architecture & Lessons Learned"
-excerpt:     "Real-Time Data Processing at RTB House – Architecture & Lessons Learned"
+subtitle:    "Real-Time Data Processing at RTB House – Architecture & Lessons Learned."
+description: "Real-Time Data Processing at RTB House – Architecture & Lessons Learned."
+excerpt:     "Real-Time Data Processing at RTB House – Architecture & Lessons Learned."
 ---
 
 During this year <a href="http://bigdatatechwarsaw.eu/agenda-2017/">Big Data Technology Summit</a> our colleague, Bartek Łoś we'll be presenting high-level summary of our real-time data processing architecture. Come and see how it was evolving, how it looks like now and what are our plan for the future!

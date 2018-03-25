@@ -19,8 +19,7 @@ In our case the improvement is very clear (see the accuracy-loss chart below), b
 Here's the abstract:
 
 > The method presented extends a given regression
-> neural network to make its performance improve. The modifi-
-> cation affects the learning procedure only, hence the extension
+> neural network to make its performance improve. The modification affects the learning procedure only, hence the extension
 > may be easily omitted during evaluation without any change in
 > prediction. It means that the modified model may be evaluated
 > as quickly as the original one but tends to perform better.

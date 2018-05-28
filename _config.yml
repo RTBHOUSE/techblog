@@ -30,5 +30,5 @@ safe: false # safe need to be off for local preview
 lsi: false
 permalink: pretty
 paginate: 10
-exclude: ["sass","node_modules","Gruntfile.js","package.json","README.md"]
+exclude: ["sass","node_modules","Gruntfile.js","package.json","README.md","vendor"]
 keep_files: []

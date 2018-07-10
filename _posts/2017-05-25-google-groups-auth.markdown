@@ -12,9 +12,9 @@ excerpt:     "Proxy for super simple G Suite auth."
 
 Don't want to deal with G Suite auth logic in your app? 
 
-No problem! We've just published an Apache module just for that. Set up <a href="https://github.com/RTBHOUSE/google_groups_auth">google_groups_auth</a>-based proxy and you're done.
+No problem! We've just published Apache module just for that. Set up <a href="https://github.com/RTBHOUSE/google_groups_auth">google_groups_auth</a>-based proxy and you're done.
 
-Proxy will take care of user authentication and basic authorization. And if you ever need more fine control, you can always examine, injected by the proxy, `googlegroups` header directly in your application.
+Proxy will take care of user authentication and basic authorization. And if you ever need more control, you can always examine, injected by the proxy, `googlegroups` header directly in your application.
 
 Simple as that!
 

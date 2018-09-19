@@ -14,7 +14,7 @@ Training of your neural network still strangely slow? **Better check out your em
 
 Believe or not, but implementations of **embedding layers** built-in the most popular deep learning frameworks (including Torch, PyTorch and TensorFlow) are **terribly inefficient**. All because their strict commitment to the perfect determinism. While it's good thing in general, it often make things not very CUDA-friendly. **That's what's slowing you down!**
 
-If you're ready to accept some nondeterminism in your training process (and admit it, you don't really care), make sure to check the new lib from our colleague, Darek: <a href="https://github.com/RTBHOUSE/pytorch-fast-embedding">pytorch-fast-embedding</a> – the **drop-in replacement** for PyTorch embeddings that gives you **up to 35x speed up**.
+If you're ready to accept some nondeterminism in your training process (and admit it, you don't really care), make sure to check the new lib from our colleague, Darek: <a href="https://github.com/RTBHOUSE/pytorch-fast-embedding">pytorch-fast-embedding</a> – the **drop-in replacement** for PyTorch embeddings that instantly gives you **up to 35x speed up**.
 
 That's 5 hours instead of 7 days. How cool is that?!
 

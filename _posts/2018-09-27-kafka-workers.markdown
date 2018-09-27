@@ -12,17 +12,17 @@ excerpt:     "Yet another real-time processing library?"
 
 We have just open-sourced our <a href="https://github.com/RTBHOUSE/kafka-workers">kafka-workers</a>, a library we use at RTB House for our processing components.
 
-There are a lot of really good solutions on the market available like Kafka Streams, Apache Flink, Apache Storm or Apache Spark. Especially Kafka Streams we found very useful for microservices from our processing infrastructure. We like the fact that it is lightweight library with **no processing cluster** and **without external dependencies**. It takes full advantage of **Kafka's parallelism model** and **group membership mechanism**.
+There are a lot of really good solutions available on the market like Kafka Streams, Apache Flink, Apache Storm or Apache Spark. In particular, we found Kafka Streams very useful for the  microservices in our data processing infrastructure. We like the fact that it is lightweight library with **no processing cluster** and **without external dependencies**. It takes full advantage of **Kafka's parallelism model** and **group membership mechanism**.
 
 Kafka Workers do the same but implementation details are different. It could be said that Kafka Workers is something between low-level Kafka Client API and Kafka Streams, but additionally it gives some features we really needed:
 - **higher level of distribution**,
 - tighter control of **offsets commits**,
-- possibility **to pause and resume processing** for given partition.
-- **asynchronous processing**
-- **backpressure**
+- possibility **to pause and resume processing** for given partition,
+- **asynchronous processing**,
+- **backpressure**.
 
 Diagram below shows how it works:
 
 ![image alt <>](/pics/workers-arch.png)
 
-For more details please check out our GitHub page: <a href="https://github.com/RTBHOUSE/kafka-workers">README</a>.
+For more details please check our GitHub page out: <a href="https://github.com/RTBHOUSE/kafka-workers">README</a>.

@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="https://techblog.rtbhouse.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://techblog.rtbhouse.com/" rel="alternate" type="text/html" /><updated>2018-10-15T12:10:23+02:00</updated><id>https://techblog.rtbhouse.com/feed.xml</id><title type="html">RTB House Technical Blog</title><subtitle>Projects we’re currently working on, thoughts on things we tried, research results etc…</subtitle><author><name>Piotr Jaczewski</name></author><entry><title type="html">Kafka Workers</title><link href="https://techblog.rtbhouse.com/2018/09/27/kafka-workers/" rel="alternate" type="text/html" title="Kafka Workers" /><published>2018-09-27T10:02:00+02:00</published><updated>2018-09-27T10:02:00+02:00</updated><id>https://techblog.rtbhouse.com/2018/09/27/kafka-workers</id><content type="html" xml:base="https://techblog.rtbhouse.com/2018/09/27/kafka-workers/">&lt;p&gt;We have just open-sourced our &lt;a href=&quot;https://github.com/RTBHOUSE/kafka-workers&quot;&gt;kafka-workers&lt;/a&gt;, a library we use at RTB House for our processing components.&lt;/p&gt;
+
+&lt;p&gt;There are a lot of really good solutions available on the market like Kafka Streams, Apache Flink, Apache Storm or Apache Spark. In particular, we found Kafka Streams very useful for the  microservices in our data processing infrastructure. We like the fact that it is lightweight library with &lt;strong&gt;no processing cluster&lt;/strong&gt; and &lt;strong&gt;without external dependencies&lt;/strong&gt;. It takes full advantage of &lt;strong&gt;Kafka’s parallelism model&lt;/strong&gt; and &lt;strong&gt;group membership mechanism&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Kafka Workers do the same but implementation details are different. It could be said that Kafka Workers is something between low-level Kafka Client API and Kafka Streams, but additionally it gives some features we really needed:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;higher level of distribution&lt;/strong&gt;,&lt;/li&gt;
+  &lt;li&gt;tighter control of &lt;strong&gt;offsets commits&lt;/strong&gt;,&lt;/li&gt;
+  &lt;li&gt;possibility &lt;strong&gt;to pause and resume processing&lt;/strong&gt; for given partition,&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;asynchronous processing&lt;/strong&gt;,&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;backpressure&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Diagram below shows how it works:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/pics/workers-arch.png&quot; alt=&quot;image alt &amp;lt;&amp;gt;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;For more details please check our GitHub page out: &lt;a href=&quot;https://github.com/RTBHOUSE/kafka-workers&quot;&gt;README&lt;/a&gt;.&lt;/p&gt;</content><author><name>Bartosz Łoś &lt;bartosz.los@rtbhouse.com&gt;</name></author><summary type="html">Yet another real-time processing library?</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://techblog.rtbhouse.com/img/home-bg.jpg" /></entry><entry><title type="html">FastEmbedding</title><link href="https://techblog.rtbhouse.com/2018/09/19/fast-embeddings/" rel="alternate" type="text/html" title="FastEmbedding" /><published>2018-09-19T14:05:00+02:00</published><updated>2018-09-19T14:05:00+02:00</updated><id>https://techblog.rtbhouse.com/2018/09/19/fast-embeddings</id><content type="html" xml:base="https://techblog.rtbhouse.com/2018/09/19/fast-embeddings/">&lt;p&gt;Training of your neural network still strangely slow? &lt;strong&gt;Better check out your embeddings!&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Believe or not, but implementations of &lt;strong&gt;embedding layers&lt;/strong&gt; built-in the most popular deep learning frameworks (including Torch, PyTorch and TensorFlow) are &lt;strong&gt;terribly inefficient&lt;/strong&gt;. All because their strict commitment to the perfect determinism. While it’s a good thing in general, it often make things not very CUDA-friendly. &lt;strong&gt;That’s what’s slowing you down!&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;If you’re ready to accept some nondeterminism in your training process (and admit it, you don’t really care), make sure to check the new lib from our colleague, Darek: &lt;a href=&quot;https://github.com/RTBHOUSE/pytorch-fast-embedding&quot;&gt;pytorch-fast-embedding&lt;/a&gt; – the &lt;strong&gt;drop-in replacement&lt;/strong&gt; for PyTorch embeddings that instantly gives you &lt;strong&gt;up to 35x speed up&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;That’s 5 hours instead of 7 days. How cool is that?!&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/fast_embeddings.png&quot; /&gt;&lt;/p&gt;</content><author><name>Bartłomiej Romański &lt;bartlomiej.romanski@rtbhouse.com&gt;</name></author><summary type="html">PyTorch embeddings up to 35x faster.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://techblog.rtbhouse.com/img/deeplearning-bg.jpg" /></entry><entry><title type="html">google_groups_auth</title><link href="https://techblog.rtbhouse.com/2018/05/25/google-groups-auth/" rel="alternate" type="text/html" title="google_groups_auth" /><published>2018-05-25T14:05:00+02:00</published><updated>2018-05-25T14:05:00+02:00</updated><id>https://techblog.rtbhouse.com/2018/05/25/google-groups-auth</id><content type="html" xml:base="https://techblog.rtbhouse.com/2018/05/25/google-groups-auth/">&lt;p&gt;Don’t want to deal with G Suite auth logic in your app?&lt;/p&gt;
+
+&lt;p&gt;No problem! We’ve just published Apache module just for that. Set up &lt;a href=&quot;https://github.com/RTBHOUSE/google_groups_auth&quot;&gt;google_groups_auth&lt;/a&gt;-based proxy and you’re done.&lt;/p&gt;
+
+&lt;p&gt;Proxy will take care of user authentication and basic authorization. And if you ever need more control, you can always examine, injected by the proxy, &lt;code class=&quot;highlighter-rouge&quot;&gt;googlegroups&lt;/code&gt; header directly in your application.&lt;/p&gt;
+
+&lt;p&gt;Simple as that!&lt;/p&gt;</content><author><name>Bartłomiej Romański &lt;bartlomiej.romanski@rtbhouse.com&gt;</name></author><summary type="html">Proxy for super simple G Suite auth.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://techblog.rtbhouse.com/img/home-bg.jpg" /></entry><entry><title type="html">Ultrafast NVMe Sampler</title><link href="https://techblog.rtbhouse.com/2018/03/02/nvme-sampler/" rel="alternate" type="text/html" title="Ultrafast NVMe Sampler" /><published>2018-03-02T13:05:00+01:00</published><updated>2018-03-02T13:05:00+01:00</updated><id>https://techblog.rtbhouse.com/2018/03/02/nvme-sampler</id><content type="html" xml:base="https://techblog.rtbhouse.com/2018/03/02/nvme-sampler/">&lt;p&gt;Tired of shuffling your learning data each and every epoch? You really need to check this out!&lt;/p&gt;
+
+&lt;p&gt;Paweł from our &lt;a href=&quot;/jobs/&quot;&gt;data science team&lt;/a&gt; just open-sourced his &lt;a href=&quot;https://github.com/RTBHOUSE/nvme_sampler&quot;&gt;NVMe Sampler&lt;/a&gt; – a library we use at RTB House while training our &lt;a href=&quot;http://pytorch.org/&quot;&gt;PyTorch&lt;/a&gt; models. With a bunch of NVMe drives, libaio and some black performance magic this little tool can generate random batches for you with the astonishing speed – over &lt;strong&gt;6 GB/s&lt;/strong&gt; (or &lt;strong&gt;5M records/s&lt;/strong&gt;).&lt;/p&gt;
+
+&lt;p&gt;See &lt;a href=&quot;https://github.com/RTBHOUSE/nvme_sampler&quot;&gt;README&lt;/a&gt; for all the details. Here’s just a little architecture preview:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/sampler.svg&quot; style=&quot;width: 80%&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Never wait for data shuffling again!&lt;/p&gt;</content><author><name>Bartłomiej Romański &lt;bartlomiej.romanski@rtbhouse.com&gt;</name></author><summary type="html">Random batch generation at 6 GB/s (or 5M records/s).</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://techblog.rtbhouse.com/img/home-bg.jpg" /></entry><entry><title type="html">Skylake’s AVX-512 support for NNNOps</title><link href="https://techblog.rtbhouse.com/2018/02/28/skylake-nnnops/" rel="alternate" type="text/html" title="Skylake's AVX-512 support for NNNOps" /><published>2018-02-28T13:05:00+01:00</published><updated>2018-02-28T13:05:00+01:00</updated><id>https://techblog.rtbhouse.com/2018/02/28/skylake-nnnops</id><content type="html" xml:base="https://techblog.rtbhouse.com/2018/02/28/skylake-nnnops/">&lt;p&gt;I’m happy to announce that our &lt;a href=&quot;https://github.com/RTBHOUSE/neural-network-native-ops&quot;&gt;neural-network-native-ops&lt;/a&gt; (aka NNNOps) – a simple, yet powerful wrapper for common numerical operations typically used in deep neural networks – now supports &lt;a href=&quot;https://software.intel.com/en-us/mkl&quot;&gt;Intel MKL&lt;/a&gt; as its backend.&lt;/p&gt;
+
+&lt;p&gt;Intel MKL fully utilizes newest CPUs (including &lt;strong&gt;Skylake&lt;/strong&gt;) with all their bells and whistles (including &lt;strong&gt;AVX-512&lt;/strong&gt;). In our scenario this means up to &lt;strong&gt;2.5x faster inference&lt;/strong&gt; (single-threaded 512x512 matrix multiplication on a Skylake Gold CPU).&lt;/p&gt;
+
+&lt;p&gt;But, as always, your mileage may vary, so go test your case – with the newest NNNOps you can easily switch backends.&lt;/p&gt;</content><author><name>Bartłomiej Romański &lt;bartlomiej.romanski@rtbhouse.com&gt;</name></author><summary type="html">Intel MKL nearly 2.5x faster then OpenBLAS on the newest CPUs.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://techblog.rtbhouse.com/img/home-bg.jpg" /></entry><entry><title type="html">See our 3D printer LIVE</title><link href="https://techblog.rtbhouse.com/2018/02/26/3d-printer/" rel="alternate" type="text/html" title="See our 3D printer LIVE" /><published>2018-02-26T13:05:00+01:00</published><updated>2018-02-26T13:05:00+01:00</updated><id>https://techblog.rtbhouse.com/2018/02/26/3d-printer</id><content type="html" xml:base="https://techblog.rtbhouse.com/2018/02/26/3d-printer/">&lt;p&gt;Ladies and gentlemen, here it is! Our pet project:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://104.155.95.218/&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Please be aware that in contrast to the production services we work on everyday this service has some unique features:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;no scalability at all&lt;/li&gt;
+  &lt;li&gt;target availability = 20%&lt;/li&gt;
+  &lt;li&gt;extremely low perfomance&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;We’re streaming with an old laptop using some very outdated technologies.&lt;/p&gt;
+
+&lt;p&gt;Weird problems and long periods of downtime are more than expected!&lt;/p&gt;</content><author><name>Bartłomiej Romański &lt;bartlomiej.romanski@rtbhouse.com&gt;</name></author><summary type="html">Live-streaming from our office hackerspace.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://techblog.rtbhouse.com/img/home-bg.jpg" /></entry><entry><title type="html">Our real-time data processing</title><link href="https://techblog.rtbhouse.com/2017/06/15/data-flow/" rel="alternate" type="text/html" title="Our real-time data processing" /><published>2017-06-15T12:15:45+02:00</published><updated>2017-06-15T12:15:45+02:00</updated><id>https://techblog.rtbhouse.com/2017/06/15/data-flow</id><content type="html" xml:base="https://techblog.rtbhouse.com/2017/06/15/data-flow/">&lt;p&gt;Our platform, which takes part in auctions, purchases and emits advertisements in the Real-Time Bidding model, processes 350K bid requests and generates 30K events per every second which gives 4TB data every day. Because of machine learning, system monitoring and financial settlements we need to filter, store, aggregate and join these events together. As a result processed events and aggregated statistics are available in Hadoop, Google’s BigQuery and Postgres. The most demanding are business requirements such as: events that should be joined together can appear 30 days after each other, we are not allowed to create any duplicates, we have to minimalize possible data losses as well as there could not be any differences between generated data outputs.&lt;/p&gt;
+
+&lt;p&gt;We have designed and implemented the solution which has reduced delay of availability of this data from 1 day to 15 seconds. It was possible because of a new approach and used technologies. It was essential to provide immutable streams of events to make it a good fit for our multi-DC architecture. Current real-time data flow in contrast to the previous solution is completely independent from bidding system which produces only light events now. Because of this separation, the core system is much more stable, but also data processing has higher quality and is easier to maintain. Additionally events making could be paused or even reprocess if it is needed.&lt;/p&gt;
+
+&lt;p&gt;In this post we would like to share our experience connected with scaling solution over clusters of computers in several data centers. Firstly, we would like to share a context in which we are operating on. Secondly, we will focus on our data-flow. We will go through 3 iterations, the first one, in which we were doing whole processing in core platform, the second one, in which we separed data processing from our bidding platform and the last one, in which we did real-time processing of immutable streams of events.&lt;/p&gt;
+
+&lt;h1 id=&quot;real-time-bidding&quot;&gt;Real-time bidding&lt;/h1&gt;
+
+&lt;p&gt;When a user visits the website, we get a request from one of the ssp networks (we can think about ssp network as an ad exchange which is selling advertising space on the Internet in real-time). In response we answer if we are interested in buying advertising space giving our bid rate. Our competitors, other similar RTB companies, do the same. If we win the auction, we pay the second price and then we are able to emit our content for given cookie.&lt;/p&gt;
+
+&lt;p&gt;Currently we process 350K bid requests per second in peak from 30 various ssp networks. We have to answer the request in time less than 50-100 milliseconds depending on particular network. Our platform consists of two types of servlets, bidders (which process bid requests) and adservlets (which process user requests: impressions, clicks and conversions). &lt;em&gt;Impression&lt;/em&gt; is created when we emit content for given cookie, &lt;em&gt;click&lt;/em&gt; when impression is clicked and &lt;em&gt;conversion&lt;/em&gt; when user does some action which is valuable for our customers, for example when user buys something in online shop. What is most important, we pay for impressions but we earn money on those paid actions which means that we take risk to ourselves. The more optimal we buy advertising space, the more we earn.&lt;/p&gt;
+
+&lt;p&gt;To be able to buy advertising space effectively, we needed to store and process data, user info and historical impressions. When it comes to user info, we wanted to know which websites he had visited and which campaigns he had seen to know what we should emit him. When it comes to impressions, we wanted to know if somebody had clicked the impression, if the conversion had occurred and how much we had earned. We were able to use this data for machine learning which meant, to put it simply, estimating probability of click or conversion. This probability was used for bid pricing.&lt;/p&gt;
+
+&lt;h1 id=&quot;the-first-iteration&quot;&gt;The first iteration&lt;/h1&gt;
+
+&lt;h2 id=&quot;mutable-impressions&quot;&gt;Mutable impressions&lt;/h2&gt;
+
+&lt;p&gt;In the first version, we kept data in &lt;a href=&quot;http://cassandra.apache.org&quot;&gt;Cassandra&lt;/a&gt;. We had two keyspaces, the first one for mutable, historical impressions and the second one for user profiles and user clicks. Related clicks and related conversions were impression’s attributes. So when the click or conversion occurred we were rewriting Cassandra’s impression. The key was to find appropriate impression to modify. In case of click it was quite easy, &lt;em&gt;impression_id&lt;/em&gt; was passed in the request. In case of conversion it was a bit more complicated. Firstly, it is difficult to decide which impression or click had caused particular conversion. Secondly, it could always happen that the consumer would claim that paid action was caused not by us but by one of our competitors. To simplify, we always assign given conversion with cookie’s last click. During conversion processing we were searching last click for given cookie using additional structure in Cassandra which was mapping from cookie to its previously processed clicks.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/pics/df_mutable_impressions.png&quot; alt=&quot;image alt &amp;lt;&amp;gt;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Cassandra’s data was uploaded into HDFS by end-of-day MapReduce batch jobs. Because of mutable impression we were forced to download all data 30 days back and rewrite HDFS content every day. Model 
+learning based on MapReduce jobs which were run on this data (mainly as Pig scripts or Hive queries).&lt;/p&gt;
+
+&lt;h2 id=&quot;drawbacks&quot;&gt;Drawbacks&lt;/h2&gt;
+
+&lt;p&gt;At the beginning solution with loading data from Cassandra was good enough for us. With time, when we were growing and we were increasing volume of our data, end-of-day batch jobs lasted too long, mainly because we were rewriting all impressions 30 days back. Additionally, the events processing made logic of our servlets too complex but also in case of mistake we were almost unable to repair or reprocess it. Schemas used for data shipping was a little flexible and there was a problem that we were using various formats (we had: objects in Java code, Cassandra’s columns and RCFiles on HDFS). It would be nice to have common logic for both serialization and deserialization of those to avoid mistakes connected with possible incompatibility. Finally, it would be nice to have an ability to process data using other tools than Hive and Pig (for example Crunch). We wanted to expand from one to a few DCs. Processing data locally, directly in servlets, using local Cassandra made it impossible.&lt;/p&gt;
+
+&lt;p&gt;In spite of machine learning we wanted to use this data to charge our clients. We wanted also to be able to do our GUIs with real-time preview. In this way we were able to monitor our campaigns. Another goal was to define campaigns’ budget. If a limit was exceeded we were able to stop campaign and do not consider it during bidding and do not emit new impressions. We needed easily accessible real-time aggregates. The most obvious solution was to add logic to servlets which were counting statistics and were updating them in Postgres. These aggregates were being buffered in memory and were being upserted to Postgres in batches. However the solution with Postgres statistics led to some problems. The major one was connected with locks in Postgres which caused lags during request processing. The another one was connected with some inaccuracies caused by uncommitted stats in memory. We had also inconsistencies between aggregates and detailed events on HDFS due to the fact that they were created by two independent flows. Additionally we wanted to slim down our database and introduce the rule that servlets read it only to be able to use slave instance instead.&lt;/p&gt;
+
+&lt;h1 id=&quot;the-second-iteration&quot;&gt;The second iteration&lt;/h1&gt;
+
+&lt;h2 id=&quot;the-first-data-flow-architecture&quot;&gt;The first data-flow architecture&lt;/h2&gt;
+
+&lt;p&gt;The diagram below shows high-level architecture of our first data-flow. We can see that platform was publishing messages on Kafka and those were read by two consumers, Camus which was writing raw events into HDFS and Storm which was counting real-time aggregates available almost online in Postgres. Because of loading Kafka messages from Kafka to HDFS by Camus in batches, we had a preview on raw events with 2-hour delay. The events, uploaded to HDFS, were being merged by Hive joins. So also this time impressions were being rewritten by end-of-day batch jobs and were available with 24-hour delay.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/pics/df_first_dataflow.png&quot; alt=&quot;image alt &amp;lt;&amp;gt;&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;distributed-log&quot;&gt;Distributed log&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://kafka.apache.org/documentation&quot;&gt;Apache Kafka&lt;/a&gt; is distributed log which could be considered as producer-consumer queue. Because of Kafka we have achieved stable, scalable and efficient solution. Stability was achieved by Kafka replication. And scalability was achieved by an ability to add new brokers to cluster and new partitions to topics. We were able to publish and consume new types of events then, everything what we needed. Kafka holds data for given amount of time and it does not matter if data was consumed or not. It was important for us in case of consumers’ temporary unavailability. Due to the fact that Kafka is stateless we were able to attach new consumers and read the same data repeatedly. We used it for storing plain events on HDFS and counting aggregates but also for many other use-cases which we came up with later. Consuming data was efficient, especially that we were reading online data (which was just produced) from system cache mainly.&lt;/p&gt;
+
+&lt;h2 id=&quot;batch-loading&quot;&gt;Batch loading&lt;/h2&gt;
+
+&lt;p&gt;Additionally we used &lt;a href=&quot;https://github.com/linkedin/camus&quot;&gt;Camus&lt;/a&gt; as a &lt;em&gt;Kafka to HDFS&lt;/em&gt; pipeline which was reading messages from Kafka and writing them to HDFS in our case in &lt;em&gt;2-hour batches&lt;/em&gt;. Camus was dumping raw data into HDFS by map-reduce jobs. It was managing its own offsets in log files and was doing &lt;em&gt;data partitioning&lt;/em&gt; into folders on HDFS. Accordingly we had a preview on raw events with 2-hour delay.&lt;/p&gt;
+
+&lt;h2 id=&quot;avro-schema-registry&quot;&gt;Avro, schema registry&lt;/h2&gt;
+
+&lt;p&gt;We decided to use &lt;a href=&quot;https://avro.apache.org&quot;&gt;Apache Avro&lt;/a&gt; which is data serialization framework. This time we were storing our HDFS content in Avro files. Because of the fact that schemas were stored with it, we were able to process it later without knowing it because schema always was there.&lt;/p&gt;
+
+&lt;p&gt;The additional element, which we decided to add, was &lt;em&gt;Schema Registry&lt;/em&gt;. We were storing historical schemas (JSON files) for Avro serialization and deserialization. Every message which we produced as byte array was send with additional header which included &lt;em&gt;schema_id&lt;/em&gt;. It is how we did events versioning. The schema registry was used in bidders and adservlets (Kafka’s producers), Camus (Kafka’s consumer) but also as &lt;em&gt;external schema&lt;/em&gt; for Hive tables.&lt;/p&gt;
+
+&lt;h2 id=&quot;real-time-accurate-statistics&quot;&gt;Real-time, accurate statistics&lt;/h2&gt;
+
+&lt;p&gt;Let’s focus on statistics again. As mentioned before, we had some simple stats in Postgres but for various reasons they were not ideal. This time we make a decision to use &lt;a href=&quot;http://storm.apache.org/&quot;&gt;Apache Storm&lt;/a&gt;. Apache Storm is a real-time computation system, which processes streams of tuples. Storm runs user-defined topologies which are directed graphs and consists of processing nodes (&lt;em&gt;spouts&lt;/em&gt; and &lt;em&gt;bolts&lt;/em&gt;), where &lt;em&gt;spouts&lt;/em&gt; are sources of streams and emit new tuples, &lt;em&gt;bolts&lt;/em&gt; receiving tuples, do processing and emit generates tuples. Some of them could be &lt;em&gt;states&lt;/em&gt; which means that they could persist information in various data stores. Storm executes spouts and bolts as individual tasks that run in parallel on multiple machines.&lt;/p&gt;
+
+&lt;p&gt;It gives &lt;em&gt;fault-tolerance&lt;/em&gt; which means that in case of a failure, the worker would be relaunched and processing would be resumed from the stage where it was broken. Trident adds transactions and microbatches which help us to achieve so called &lt;em&gt;exactly-once processing&lt;/em&gt; but also good &lt;em&gt;latency and throughput balance&lt;/em&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;stats-counter-topology&quot;&gt;Stats-counter topology&lt;/h2&gt;
+
+&lt;p&gt;We implemented stats-counter as Storm topology. Storm was reading messages from Kafka, deserializing it, counting stats and upserting state to Postgres. We were writing aggregates and Trident’s &lt;em&gt;transaction_ids&lt;/em&gt; atomically. In case of rebatch we knew exactly which aggregate was updated and which one was not. It was possible because Trident assigns Kafka’s offset range with &lt;em&gt;transaction_id&lt;/em&gt; which is committed in Zookeeper.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/pics/df_statscounter_topology.png&quot; alt=&quot;image alt &amp;lt;&amp;gt;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Thanks to it we have achieved so called &lt;em&gt;exactly-once state&lt;/em&gt; and accurate statistics. We set micro-batches to 15 seconds so Postgres aggregates were updated every 15 seconds. The same effect could be achieved by writing current offset with aggregates. But without transactional database or other atomic operations it would not be possible.&lt;/p&gt;
+
+&lt;h2 id=&quot;drawbacks-1&quot;&gt;Drawbacks&lt;/h2&gt;
+
+&lt;p&gt;Unfortunately our data-flow still had some disadvantages. As mentioned, we had almost online view on aggregates and raw events with 2-hour delay but detailed, joined events were still available with 24-hour delay. Additionally Hive queries were difficult to maintain and quite ineffective for us. We were growing and our hive queries lasted too long. In case of some failure, we were forced to run it again so we get even greater delay then. The servlets’ complex logic was still a problem. Because of mutable events it was also difficult to make some assumptions about data.&lt;/p&gt;
+
+&lt;h1 id=&quot;the-third-iteration&quot;&gt;The third iteration&lt;/h1&gt;
+
+&lt;h2 id=&quot;new-approach&quot;&gt;New approach&lt;/h2&gt;
+
+&lt;p&gt;We wanted to have real-time processing and make the core system independent on complex data processing. The key was to introduce immutable streams of events, but it would not be possible without changing our schemas. Previously the related clicks and related conversions were impression’s attributes. We changed this relation, now click contains related impression and conversion contains both previous impression and previous click. Because of this change, once created impression was immutable forever and joining could be done during click and conversion processing.&lt;/p&gt;
+
+&lt;h2 id=&quot;data-flow-topology&quot;&gt;Data-flow topology&lt;/h2&gt;
+
+&lt;p&gt;This time we also decided to use Storm. The platform is producing light events and data-flow responsibility is to consume Kafka messages, deseralize and process them. At the end generated events are seralized and sent back to Kafka (to new topics). More precisely, processing means for us to enrich information, classify events, join them together, count some indicators but also filter events and deduplicate them. Because of huge time window (conversion could appear 30 days after impression), we needed additional storage for storing processed events to join. We decided to use a key-value storage: &lt;a href=&quot;https://www.aerospike.com&quot;&gt;Aerospike&lt;/a&gt;. Merging algorithm is quite similar to this one which was used previously in Cassandra. This time we are storing in Aerospike: Avro objects but also some additional mappings (from cookie to previously processed events and from impression to previously processed related events) to be able to do joining operations.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/pics/df_dataflow_topology.png&quot; alt=&quot;image alt &amp;lt;&amp;gt;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;We can see that now we have 3 independent topologies, one topology for one DC. It is good enough for us because we are processing independent streams of events. Now, when we are launching the second DC in the USA, we will need additional synchronization between related DCs. For example, it could happen that impression will be send from the West Coast and appropriate conversion will be send from the East Coast. Those 3 data-flows are only instances of one topology implementation, run for various topics.&lt;/p&gt;
+
+&lt;p&gt;What is worth mentioning, we decided to minimalize any possible dependencies on used framework, to be able to take our complex logic and run it with different computation system. Thus whole processing is done by one Storm component.&lt;/p&gt;
+
+&lt;h2 id=&quot;high-level-architecture&quot;&gt;High-level architecture&lt;/h2&gt;
+
+&lt;p&gt;The servlets were writing messages to front Kafkas. MirrorMaker was mirroring events from three DCs to central Kafka where whole processing was done. The data-flow was working there and was sending events back to Kafka. Further we were able to count aggregates, write generated events to Google’s BigQuery, HDFS or Solr using various Flume instances.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/pics/df_architecture.png&quot; alt=&quot;image alt &amp;lt;&amp;gt;&quot; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;summary&quot;&gt;Summary&lt;/h1&gt;
+
+&lt;p&gt;To sum up, in the first iteration we were doing whole processing in core platform by rewriting mutable impressions in Cassandra. It was quite inflexible solution but what was even worse, we were forced to send the same data number of times from Cassanda to HDFS. In the second iteration we added Kafka and were using it for transporting our data. This time platform was producing raw events but we had different types of information with different delay. Still, we were forced to rewrite the same data on HDFS repeatedly. In the last iteration we did a real-time processing of immutable streams of events and we was streaming generated events to various sources.&lt;/p&gt;
+
+&lt;p&gt;In conclusion, what have we achieved exactly by those improvements? As previously mentioned, new architecture fits well with processing data from various DCs and it has already been gained by the second iteration. After the third iteration, not only have we achieved the real-time processing but this time streamed events are available almost online both in HDFS and BigQuery. HDFS’s data is used mainly for our machine learning. On the other hand, we have on BigQuery easily accessible and queryable data with online view. It gives us new possibilities to monitor our platform infrastructure but also our bidding logic. Now we are able to do A/B tests for our models and we could react quickly if something is going bad. Additionally, we are able to count new types of indicators (for example how many events were deduplicated) and monitor them. Current bidding platform is completely separated from complex events processing and its business logic. Because of this separation, the core system is much more stable, but also data processing has higher quality. It was achieved partially by the second iteration but with last one data-flow is easier to develop, test and maintain. Additionally, events processing could be paused or even reprocessed  now if it is needed. Last but not least, every service in our central data-center is &lt;a href=&quot;https://www.docker.com&quot;&gt;dockerized&lt;/a&gt; so clusters of Kafkas, Storms, Flumes and MirrorMakers are easy to maintain and to scale them horizontally. With some custom-built tools we have achieved so-called &lt;em&gt;one-click deployment&lt;/em&gt; for our central processing infrastructure.&lt;/p&gt;</content><author><name>Bartosz Łoś &lt;bartosz.los@rtbhouse.com&gt;</name></author><summary type="html">Architecture &amp; lessons learned.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://techblog.rtbhouse.com/img/home-bg.jpg" /></entry><entry><title type="html">Kafka Graphite Reporter</title><link href="https://techblog.rtbhouse.com/2017/06/02/kafka-graphite-reporter/" rel="alternate" type="text/html" title="Kafka Graphite Reporter" /><published>2017-06-02T14:05:00+02:00</published><updated>2017-06-02T14:05:00+02:00</updated><id>https://techblog.rtbhouse.com/2017/06/02/kafka-graphite-reporter</id><content type="html" xml:base="https://techblog.rtbhouse.com/2017/06/02/kafka-graphite-reporter/">&lt;p&gt;Check out our new mini-poject: &lt;a href=&quot;https://github.com/RTBHOUSE/kafka-graphite-reporter&quot;&gt;Kafka Graphite Reporter&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Why to create one more tool for this? There are several similar solutions present on the market, but metrics reported by this plugin are in line with metrics exposed by Kafka through JMX. This feature makes transition from tools like &lt;a href=&quot;https://github.com/jmxtrans/jmxtrans&quot;&gt;jmxtrans&lt;/a&gt; easier.&lt;/p&gt;
+
+&lt;p&gt;Happy monitoring!&lt;/p&gt;</content><author><name>Bartłomiej Romański &lt;bartlomiej.romanski@rtbhouse.com&gt;</name></author><summary type="html">Open-sourcing a simple tool for Apache Kafka monitoring.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://techblog.rtbhouse.com/img/home-bg.jpg" /></entry><entry><title type="html">Big Data Technology Summit</title><link href="https://techblog.rtbhouse.com/2017/05/31/bigdatatech/" rel="alternate" type="text/html" title="Big Data Technology Summit" /><published>2017-05-31T14:05:00+02:00</published><updated>2017-05-31T14:05:00+02:00</updated><id>https://techblog.rtbhouse.com/2017/05/31/bigdatatech</id><content type="html" xml:base="https://techblog.rtbhouse.com/2017/05/31/bigdatatech/">&lt;p&gt;During this year &lt;a href=&quot;http://bigdatatechwarsaw.eu/agenda-2017/&quot;&gt;Big Data Technology Summit&lt;/a&gt; our colleague, Bartek Łoś we’ll be presenting high-level summary of our real-time data processing architecture. Come and see how it was evolving, how it looks like now and what are our plan for the future!&lt;/p&gt;
+
+&lt;p&gt;A little teaser:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/bigdatatech.png&quot; style=&quot;position: relative; top:-20px;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;EDIT: &lt;a href=&quot;/files/bigdatatech.pdf&quot;&gt;Slides&lt;/a&gt; from the presentation and &lt;a href=&quot;/2017/06/15/data-flow/&quot;&gt;post&lt;/a&gt; on this topic have just been published.&lt;/p&gt;</content><author><name>Bartłomiej Romański &lt;bartlomiej.romanski@rtbhouse.com&gt;</name></author><summary type="html">Real-Time Data Processing at RTB House – Architecture &amp; Lessons Learned.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://techblog.rtbhouse.com/img/home-bg.jpg" /></entry><entry><title type="html">Improving the performance of neural networks in regression tasks using drawering</title><link href="https://techblog.rtbhouse.com/2017/05/01/drawering/" rel="alternate" type="text/html" title="Improving the performance of neural networks in regression tasks using drawering" /><published>2017-05-01T14:05:00+02:00</published><updated>2017-05-01T14:05:00+02:00</updated><id>https://techblog.rtbhouse.com/2017/05/01/drawering</id><content type="html" xml:base="https://techblog.rtbhouse.com/2017/05/01/drawering/">&lt;p&gt;&lt;strong&gt;drawering&lt;/strong&gt; – our newest idea for improving the performance of neural networks in regression tasks will be presented during &lt;a href=&quot;http://www.ijcnn.org/&quot;&gt;The 2017 International Joint Conference on Neural Networks&lt;/a&gt; in in Anchorage, Alaska, USA.&lt;/p&gt;
+
+&lt;p&gt;In our case the improvement is very clear (see the accuracy-loss chart below), but we strongly believe the method should work well in most of the regression tasks. Let us know how this idea works on your model!&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/pics/drawering-chart.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Here’s the abstract:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The method presented extends a given regression
+neural network to make its performance improve. The modification affects the learning procedure only, hence the extension
+may be easily omitted during evaluation without any change in
+prediction. It means that the modified model may be evaluated
+as quickly as the original one but tends to perform better.&lt;/p&gt;
+
+  &lt;p&gt;This improvement is possible because the modification gives
+better expressive power, provides better behaved gradients
+and works as a regularization. The knowledge gained by
+the temporarily extended neural network is contained in the
+parameters shared with the original neural network.&lt;/p&gt;
+
+  &lt;p&gt;The only cost is an increase in learning time.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;And here’s the full &lt;a href=&quot;https://arxiv.org/abs/1612.01589&quot;&gt;paper&lt;/a&gt;.&lt;/p&gt;</content><author><name>Bartłomiej Romański &lt;bartlomiej.romanski@rtbhouse.com&gt;</name></author><summary type="html">See our recent work at IJCNN 2017 in Anchorage, Alaska, USA.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://techblog.rtbhouse.com/img/deeplearning-bg.jpg" /></entry><entry><title type="html">Our approach to fast Avro serialization and deserialization in JVM</title><link href="https://techblog.rtbhouse.com/2017/04/18/fast-avro/" rel="alternate" type="text/html" title="Our approach to fast Avro serialization and deserialization in JVM" /><published>2017-04-18T14:31:18+02:00</published><updated>2017-04-18T14:31:18+02:00</updated><id>https://techblog.rtbhouse.com/2017/04/18/fast-avro</id><content type="html" xml:base="https://techblog.rtbhouse.com/2017/04/18/fast-avro/">&lt;p&gt;In the Big Data world, &lt;a href=&quot;https://avro.apache.org/&quot;&gt;Apache Avro&lt;/a&gt; is a popular data serialization system. It provides means to represent rich data structures which can be serialized and deserialized very fast, thanks to the compact binary data format. At RTB House we heavily rely on Avro, using it as the primary format for data circulating in our Ad serving infrastructure. Due to that fact, we serialize and deserialize hundreds of thousands of Avro records per second.&lt;/p&gt;
+
+&lt;h1 id=&quot;performance-issues&quot;&gt;Performance issues&lt;/h1&gt;
+
+&lt;p&gt;In spite of being fast per se, Avro serialization has quickly revealed performance issues in our business scenarios. We discovered that Avro serialization/deserialization routines consume much of CPU time, resulting in heavy loads and reduced throughput. Although at a glance it seemed that through the standard API not much can be done to improve Avro serialization/deserialization efficiency, we quickly started to think about alternative ways to deal with this issue.&lt;/p&gt;
+
+&lt;p&gt;A quick research revealed that standard Avro (de)serialization procedure includes schema analysis which determines what to do with each field of Avro record and thus costs some CPU time. An obvious conclusion was that the elimination of schema analysis phase would buy us some additional performance. In order to achieve this, the (de)serialization procedure should “know” how to (de)serialize record without performing schema analysis. The natural way of implementing such feature is to use adequate code, which should orchestrate the underlying low level Avro encoder/decoder according to schema. This would allow to entirely drop the schema analysis phase and to (de)serialize data immediately.&lt;/p&gt;
+
+&lt;h1 id=&quot;our-solution&quot;&gt;Our solution&lt;/h1&gt;
+
+&lt;p&gt;Having this conclusion in mind, our first attempt was to manually write corresponding (de)serialization procedures, what proved the concept to be valid. The sample deserialization Java code written ad hoc turned out to be 4 times faster than standard Avro deserialization facility. Unfortunately, the manual solution was inconvenient and difficult to maintain in general. Whenever the Avro schema changed, the code had to be rewritten and we also had to maintain schema “transition code”, which was responsible for reading old data in compliance with the new schema. Rather quickly the dirty solution became unusable, and in majority of cases we had to fallback to the standard Avro (de)serialization routines. But the seed had been planted, and we started to think about more generic solution.&lt;/p&gt;
+
+&lt;p&gt;Shortly thereafter we came up with an idea to generate on demand the code responsible for Avro encoder/decoder orchestration. In case of data serialization it was pretty straightforward, because whole orchestration would depend only on record schema. However in case of deserialization the problem was more complex. Avro &lt;code class=&quot;highlighter-rouge&quot;&gt;DatumReader&lt;/code&gt; interface implies that data can be read into record of different schema than it was written with. This issue rendered our dirty solution unusable in long term. So we needed something capable of doing expected and actual schema comparison. Fortunately the original implementation of Avro deserialization provides mechanisms to conduct such comparison. The &lt;code class=&quot;highlighter-rouge&quot;&gt;ResolvingGrammarGenerator&lt;/code&gt; class can provide a list of symbols which instrument the default data reader on how to deal with possible differences between actual and expected schemas. The most common discrepancies between schemas are removed fields and changed field order. More sophisticated differences include enum values permutations. Some differences of course make schemas incompatible, like the addition of required field without default value in expected schema, thus deserializations are impossible and these cases are also identified by &lt;code class=&quot;highlighter-rouge&quot;&gt;ResolvingGrammarGenerator&lt;/code&gt;. So we decided to use the standard &lt;code class=&quot;highlighter-rouge&quot;&gt;ResolvingGrammarGenerator&lt;/code&gt; but we have implemented our own logic interpreting generated schema comparison symbols.&lt;/p&gt;
+
+&lt;p&gt;The whole concept of dedicated (de)serializer class generation takes advantage of Java Just-In-Time compilation. Apart from skipping the schema analysis phase, the additional boost of efficiency comes from JIT compilation. As soon as the JVM identifies that a certain method gets executed frequently, its bytecode is scheduled for native compilation. This boosts the performance of the code significantly. At the beginning our solution put all the (de)serialization code in one bulky method. This proved to be valid for shorter records but with longer ones the method became too large (&amp;gt;8k  byte code instructions) hence unsuitable for JIT compilation. Of course one can disable such flag as &lt;code class=&quot;highlighter-rouge&quot;&gt;-XX:-DontCompileHugeMethods&lt;/code&gt; in the JVM, however this surely will have global impact, which can be detrimental in general. The partial solution to this problem is to generate separate methods for all nested records which the top-level record contains, thus reducing (de)serialization method size. Unfortunately it is still possible to generate record with large amount of primitive, enum or fixed fields which can exceed the JIT method size threshold.
+Once the code is generated it has to be compiled in order to become usable. We decided that the code generation and compilation should occur on demand, whenever the client asks to (de)serialize record with specific schema. The generation and compilation phase take place in parallel thread and until they are not finished, the (de)serialization is done via the standard Avro &lt;code class=&quot;highlighter-rouge&quot;&gt;DatumReader&lt;/code&gt;/&lt;code class=&quot;highlighter-rouge&quot;&gt;DatumWriter&lt;/code&gt; implementation. The generated and compiled classes can be then put in a specified directory, so no future compilation would be necessary as the classes can be loaded from the specified filesystem path.&lt;/p&gt;
+
+&lt;p&gt;Our solution provides four classes at client disposal, depending on a desired action: &lt;code class=&quot;highlighter-rouge&quot;&gt;FastGenericDatumReader&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;FastSpecificDatumReader&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;FastGenericDatumWriter&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;FastSpecificDatumWriter&lt;/code&gt;. These class names are self-explanatory. The basic usage is similar to standard implementation of &lt;code class=&quot;highlighter-rouge&quot;&gt;DatumReader&lt;/code&gt;/&lt;code class=&quot;highlighter-rouge&quot;&gt;DatumWriter&lt;/code&gt;. An additional configuration is possible via &lt;code class=&quot;highlighter-rouge&quot;&gt;FastSerdeCache&lt;/code&gt; class, which main purpose is to schedule compilation and hold references for compiled  (de)serializer classes.&lt;/p&gt;
+
+&lt;p&gt;You can go and grab our implementation at: &lt;a href=&quot;https://github.com/RTBHOUSE/avro-fastserde&quot;&gt;github.com/RTBHOUSE/avro-fastserde&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;benchmarks&quot;&gt;Benchmarks&lt;/h1&gt;
+
+&lt;p&gt;Lets look how does our implementation of &lt;code class=&quot;highlighter-rouge&quot;&gt;DatumReader&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;DatumWriter&lt;/code&gt; interfaces compare to the standard one. For this purpose we have prepared corresponding benchmarks. All of them were executed using &lt;a href=&quot;http://openjdk.java.net/projects/code-tools/jmh/&quot;&gt;JMH Framework&lt;/a&gt; to provide trustworthy microbenchmarking environment. All benchmarks were executed using Java Runtime Environment version 1.8.0_60 on a 2.5 GHz Core i7 (Haswell) machine with 16 GB of memory.&lt;/p&gt;
+
+&lt;p&gt;Each benchmark method makes exactly 1000 reads or writes for specific kind of records with the JMH framework measuring throughput.&lt;/p&gt;
+
+&lt;p&gt;The first benchmark operates on our internal, real-life schema, which consists of 25 nested records with variable number of solely union type of fields resulting in total of about 600.&lt;/p&gt;
+
+&lt;p&gt;&lt;img class=&quot;img&quot; src=&quot;/pics/reading-internal.svg&quot; style=&quot;display: inline; width: 49%;&quot; /&gt;
+  &lt;img class=&quot;img&quot; src=&quot;/pics/writing-internal.svg&quot; style=&quot;display: inline; width: 49%;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Obviously our solution has improved the throughput more than twofold in case of generic data deserialization and quadrupled the performance in case of specific data deserialization. In case of data serialization the results are even more impressive. Our specific data serialization is almost five times faster than its native counterpart.&lt;/p&gt;
+
+&lt;p&gt;The next benchmarks operate on non real-life record schemas, which were randomly generated but conform to the following criteria:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;number of fields (&lt;strong&gt;small&lt;/strong&gt;: 10 fields, &lt;strong&gt;large&lt;/strong&gt;: 100 fields)&lt;/li&gt;
+  &lt;li&gt;depth - meaning the maximal level of record nesting (&lt;strong&gt;flat&lt;/strong&gt;: no nested records, &lt;strong&gt;deep&lt;/strong&gt;: 3 levels of nested records)&lt;/li&gt;
+  &lt;li&gt;record fields can be of any Avro type including unions, arrays and maps.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Below are the results:&lt;/p&gt;
+
+&lt;p&gt;&lt;img class=&quot;img&quot; src=&quot;/pics/reading-flatandsmall.svg&quot; style=&quot;display: inline; width: 49%;&quot; /&gt;
+  &lt;img class=&quot;img&quot; src=&quot;/pics/writing-flatandsmall.svg&quot; style=&quot;display: inline; width: 49%;&quot; /&gt;
+  &lt;img class=&quot;img&quot; src=&quot;/pics/reading-deepandsmall.svg&quot; style=&quot;display: inline; width: 49%;&quot; /&gt;
+  &lt;img class=&quot;img&quot; src=&quot;/pics/writing-deepandsmall.svg&quot; style=&quot;display: inline; width: 49%;&quot; /&gt;
+  &lt;img class=&quot;img&quot; src=&quot;/pics/reading-flatandlarge.svg&quot; style=&quot;display: inline; width: 49%;&quot; /&gt;
+  &lt;img class=&quot;img&quot; src=&quot;/pics/writing-flatandlarge.svg&quot; style=&quot;display: inline; width: 49%;&quot; /&gt;
+  &lt;img class=&quot;img&quot; src=&quot;/pics/reading-deepandlarge.svg&quot; style=&quot;display: inline; width: 49%;&quot; /&gt;
+  &lt;img class=&quot;img&quot; src=&quot;/pics/writing-deepandlarge.svg&quot; style=&quot;display: inline; width: 49%;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;In general, the above charts reveal that our solution tends to be about 50% faster than its native counterpart. Both &lt;code class=&quot;highlighter-rouge&quot;&gt;DatumReader&lt;/code&gt;’s and &lt;code class=&quot;highlighter-rouge&quot;&gt;DatumWriter&lt;/code&gt;’s manifest the same tendency, but in some cases our implementation for the specific data is two times faster than the native one.&lt;/p&gt;
+
+&lt;p&gt;But why our implementation performs much better on the real-life schema than on the generated ones? The answer is the Avro union type, which requires an additional designation of subject data type. Below is the complementary benchmark, which shows what happens if we force all fields of “small” and “deep” record to be of union type.&lt;/p&gt;
+
+&lt;p&gt;&lt;img class=&quot;img&quot; src=&quot;/pics/reading-onlyunion.svg&quot; style=&quot;display: inline; width: 49%;&quot; /&gt;
+  &lt;img class=&quot;img&quot; src=&quot;/pics/writing-onlyunion.svg&quot; style=&quot;display: inline; width: 49%;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Clearly, the results are similar to those of our real-life schema, with our solution being at least two times faster.&lt;/p&gt;
+
+&lt;p&gt;In order to have clear view on your particular scenario, we encourage to benchmark against your own schemas, as the results may vary depending on the structure of records, especially if you leverage the union type in your schemas. Generally, we may assume that records consisting of many nested records with fairly limited number of fields will perform better than larger and relatively “flat” records.&lt;/p&gt;
+
+&lt;p&gt;To recap, if you process a lot of Avro records in your scenario its worth to give avro-fastserde a try, as you may expect a significant boost of processing performance.&lt;/p&gt;</content><author><name>Piotr Jaczewski &lt;piotr.jaczewski@rtbhouse.com&gt;</name></author><summary type="html">Check out how we improved the Apache Avro processing performance.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://techblog.rtbhouse.com/img/home-bg.jpg" /></entry><entry><title type="html">Meet us at AAAI-2017 in San Francisco</title><link href="https://techblog.rtbhouse.com/2017/01/27/aaai/" rel="alternate" type="text/html" title="Meet us at AAAI-2017 in San Francisco" /><published>2017-01-27T13:05:00+01:00</published><updated>2017-01-27T13:05:00+01:00</updated><id>https://techblog.rtbhouse.com/2017/01/27/aaai</id><content type="html" xml:base="https://techblog.rtbhouse.com/2017/01/27/aaai/">&lt;p&gt;I’m happy to annouced that our college, Konrad Żołna will be presenting his work during &lt;a href=&quot;https://www.aaai.org/Conferences/AAAI/aaai17.php&quot;&gt;The Thirty-First AAAI Conference on Artificial Intelligence&lt;/a&gt;. Come and see what we’ve been working on at RTB House recently!&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/pics/aaai17.jpg&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Also, don’t forget to check out the &lt;a href=&quot;/files/14220-66738-1-PB.pdf&quot;&gt;paper&lt;/a&gt; and our previous &lt;a href=&quot;/2016/06/25/user2vec/&quot;&gt;post&lt;/a&gt; on this topic!&lt;/p&gt;</content><author><name>Bartłomiej Romański &lt;bartlomiej.romanski@rtbhouse.com&gt;</name></author><summary type="html">The Thirty-First AAAI Conference on Artificial Intelligence.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://techblog.rtbhouse.com/img/deeplearning-bg.jpg" /></entry><entry><title type="html">CUDA FFM – 50-70x faster training</title><link href="https://techblog.rtbhouse.com/2016/07/26/cuda-ffm/" rel="alternate" type="text/html" title="CUDA FFM – 50-70x faster training" /><published>2016-07-26T14:05:00+02:00</published><updated>2016-07-26T14:05:00+02:00</updated><id>https://techblog.rtbhouse.com/2016/07/26/cuda-ffm</id><content type="html" xml:base="https://techblog.rtbhouse.com/2016/07/26/cuda-ffm/">&lt;p&gt;Today we’re open-sourcing &lt;a href=&quot;https://github.com/RTBHOUSE/cuda-ffm&quot;&gt;CUDA FFM&lt;/a&gt; – our tool for very fast FFM training and inference.&lt;/p&gt;
+
+&lt;p&gt;You can expect &lt;strong&gt;50-70x speed up in training&lt;/strong&gt; (comparing to the CPU implementation) and &lt;strong&gt;5-10x speed up in inference&lt;/strong&gt; (compaing to non-AVX-optimized implementation).&lt;/p&gt;
+
+&lt;p&gt;What’s inside?&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;very fast FFM trainer that trains FFM model using GPU
+    &lt;ul&gt;
+      &lt;li&gt;very fast FFM prediction C++ library (using CPU)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Java bindings to that library (via JNI)&lt;/li&gt;
+  &lt;li&gt;few dataset management utils (splitting, shuffling, conversion)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Field-aware Factorization Machines (FFM) is a machine learning model described by the following equation:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/pics/simplified_ffm_y.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Checkout out the original &lt;a href=&quot;http://www.csie.ntu.edu.tw/~cjlin/papers/ffm.pdf&quot;&gt;paper&lt;/a&gt; for the details or our &lt;a href=&quot;https://github.com/RTBHOUSE/cuda-ffm#ffm-formulation&quot;&gt;README&lt;/a&gt; for a quick summary.&lt;/p&gt;</content><author><name>Bartłomiej Romański &lt;bartlomiej.romanski@rtbhouse.com&gt;</name></author><summary type="html">Field-aware Factorization Machines on CUDA.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://techblog.rtbhouse.com/img/home-bg.jpg" /></entry><entry><title type="html">Our user2vec at ICML 2016</title><link href="https://techblog.rtbhouse.com/2016/06/25/user2vec/" rel="alternate" type="text/html" title="Our user2vec at ICML 2016" /><published>2016-06-25T14:05:00+02:00</published><updated>2016-06-25T14:05:00+02:00</updated><id>https://techblog.rtbhouse.com/2016/06/25/user2vec</id><content type="html" xml:base="https://techblog.rtbhouse.com/2016/06/25/user2vec/">&lt;p&gt;We’ve just published &lt;strong&gt;user2vec&lt;/strong&gt; – our approach to user modeling with LSTM networks.&lt;/p&gt;
+
+&lt;p&gt;The work was presented by Konrad Żołna during &lt;a href=&quot;https://sites.google.com/site/admlsystemsworkshop/home&quot;&gt;Online Advertising Systems Workshop&lt;/a&gt;, a part of &lt;a href=&quot;https://icml.cc/2016/index.html&quot;&gt;ICML 2016&lt;/a&gt; in New York.&lt;/p&gt;
+
+&lt;p&gt;Here’s the quick visualisation of the main idea:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/pics/user2vec-model.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;And here’s the abstract:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The LSTM model presented is capable of describing a user of a particular website without human expert supervision. In other words,
+the model is able to automatically craft features which depict attitude, intention and the overall state of a user. This effect is achieved by projecting the complex history of the user (sequence data corresponding to his actions on the website) into fixed sized vectors of real numbers. The representation obtained may be used to enrich typical models used in RTB: click-through rate (CTR), conversion rate (CR) etc.&lt;/p&gt;
+
+  &lt;p&gt;The enriched CR model is capable of learning from wider data since it indirectly analyzes all actions of an advertiser’s website users, not only those users who clicked on an ad.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Check out the &lt;a href=&quot;/files/user2vec-slides.pdf&quot;&gt;slides&lt;/a&gt; and the full &lt;a href=&quot;/files/user2vec-user-modeling-using-lstm.pdf&quot;&gt;paper&lt;/a&gt; for all the details!&lt;/p&gt;</content><author><name>Bartłomiej Romański &lt;bartlomiej.romanski@rtbhouse.com&gt;</name></author><summary type="html">User modeling using LSTM networks.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://techblog.rtbhouse.com/img/deeplearning-bg.jpg" /></entry><entry><title type="html">Welcome to our blog!</title><link href="https://techblog.rtbhouse.com/2016/05/18/welcome/" rel="alternate" type="text/html" title="Welcome to our blog!" /><published>2016-05-18T13:31:18+02:00</published><updated>2016-05-18T13:31:18+02:00</updated><id>https://techblog.rtbhouse.com/2016/05/18/welcome</id><content type="html" xml:base="https://techblog.rtbhouse.com/2016/05/18/welcome/">&lt;p&gt;Welcome to our technical blog. We’ll post here information about all the cool stuff we’re doing in our team: projects we’re currently working on, thoughts on things we tried, research results etc…&lt;/p&gt;
+
+&lt;p&gt;Stay tuned for more to come!&lt;/p&gt;</content><author><name>RTB House IT</name></author><summary type="html">Projects we’re currently working on, thoughts on things we tried, research results etc…</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://techblog.rtbhouse.com/img/home-bg.jpg" /></entry></feed>

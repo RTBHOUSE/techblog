@@ -2,7 +2,7 @@
 
 RTB House tech blog jekyll sources.
 
-Live version: http://techblog.rtbhouse.com/
+Live version: https://techblog.rtbhouse.com/
 
 ## Editing
 

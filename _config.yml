@@ -15,7 +15,8 @@ disqus_site_id: ""
 copyright_name: RTB HOUSE
 
 # Plugins
-plugins:
+gems:
+  - jekyll-feed
   - jekyll-sitemap
   - jekyll-paginate
   - jekyll-seo-tag

@@ -100,5 +100,5 @@ This diagram shows high-level architecture of our data-flow. The servlets wrote 
 
 ![image alt <>](/pics/df1-immutable-streams-arch.png)
 
-EDIT: A new <a href="/2018/12/10/data-flow-part2/">post</a> on this topic have just been published.
+EDIT: A new <a href="/2018/12/10/data-flow-part2/">post</a> on this topic has just been published.
 

@@ -3,7 +3,7 @@ layout: post
 title:  "Our real-time data processing - part 2"
 date:   2018-12-10 23:30:00 +0200
 author: Bartosz Łoś <bartosz.los@rtbhouse.com>
-image: "pics/df2-multi-dc-arch.png"
+image: "pics/df2-multi-dc-arch-100x191.png"
 photo: "img/home-bg.jpg"
 
 subtitle:    "Architecture & lessons learned."

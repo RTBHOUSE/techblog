@@ -1,0 +1,29 @@
+---
+layout: post
+title:  "Our talk at PL in ML 2018"
+date:   2018-12-15 14:05:00 +0200
+author: Bartłomiej Romański <bartlomiej.romanski@rtbhouse.com>
+photo:  "img/deeplearning-bg.jpg"
+image:  "pics/pl-in-ml-slides.png"
+
+subtitle:    "Machine learning challenges in the real-world computational advertising."
+description: "Machine learning challenges in the real-world computational advertising."
+excerpt:     "Machine learning challenges in the real-world computational advertising."
+---
+
+Missed our talk at <a href="https://plinml.mimuw.edu.pl/">PL in ML</a>? Check out <a href="/files/RTB House PL in ML 2018.pdf">the slides</a>:
+
+<a href="/files/RTB House PL in ML 2018.pdf"><img src="/pics/pl-in-ml-slides.png"></a>
+
+And for the record, the abstract:
+
+> Ads, like it or not, is what fuels the modern internet. But what does it take to display a good ad? The one that shows an attractive offering, in the right place, at the right time; the one that does not bother the user and does not ruin advertiser's budget.
+> 
+> Surprisingly complex machinery runs hard behind the scenes to make this happen!
+> 
+> In this talk, we will briefly walk you through the modern online ads ecosystem focusing on key, related ML challenges: How to make neural networks handle the enormous scale? Why is plain supervised learning suboptimal in the world of imperfect information and weird feedback loops? Why SVD, the gold standard of collaborative filtering, does not solve the right problem? And why does Vickrey's truthful bidder lose to others in the game of Real-Time Bidding?
+>
+> We will discuss various topics. Dive deep into some, and barely touch many others. All of this to eventually answer one of the most fundamental questions of the field: why we keep showing you those fridges while you already bought one you like?*
+
+See you next time!
+

@@ -4,7 +4,7 @@ title:  "Our talk at PL in ML 2018"
 date:   2018-12-15 14:05:00 +0200
 author: Bartłomiej Romański <bartlomiej.romanski@rtbhouse.com>
 photo:  "img/deeplearning-bg.jpg"
-image:  "pics/pl-in-ml-slides.png"
+image:  "pics/pl-in-ml-title.png"
 
 subtitle:    "Machine learning challenges in the real-world computational advertising."
 description: "Machine learning challenges in the real-world computational advertising."
@@ -13,7 +13,7 @@ excerpt:     "Machine learning challenges in the real-world computational advert
 
 Missed our talk at <a href="https://plinml.mimuw.edu.pl/">PL in ML</a>? Check out <a href="/files/RTB House PL in ML 2018.pdf">the slides</a>:
 
-<a href="/files/RTB House PL in ML 2018.pdf"><img src="/pics/pl-in-ml-slides.png"></a>
+<a href="/files/RTB House PL in ML 2018.pdf"><img src="/pics/pl-in-ml-slides-2.png"></a>
 
 And for the record, the abstract:
 

@@ -14,7 +14,7 @@ During this year <a href="http://bigdatatechwarsaw.eu/agenda-2017/">Big Data Tec
 
 A little teaser:
 
-<img src="/img/bigdatatech.png" style="position: relative; top:-20px;">
+<img src="/pics/bigdatatech.png" style="position: relative; top:-20px;">
 
 EDIT: <a href="/files/bigdatatech.pdf">Slides</a> from the presentation and a new <a href="/2017/06/15/data-flow-part1/">post</a> on this topic have just been published.
 

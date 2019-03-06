@@ -1,0 +1,19 @@
+---
+layout: post
+title:  "How we have grown 10x within 2 years?"
+date:   2019-03-05 14:05:00 +0200
+author: Bartłomiej Romański <bartlomiej.romanski@rtbhouse.com>
+photo:  "img/home-bg.jpg"
+image:  "pics/bigdatatech-2.png"
+
+subtitle:    "Real-Time Data Processing at RTB House."
+description: "Real-Time Data Processing at RTB House."
+excerpt:     "Real-Time Data Processing at RTB House."
+---
+
+Last week, during <a href="https://bigdatatechwarsaw.eu/agenda/">Big Data Technology Warsaw Summit 2019</a> conference, our Head of Core Data Processing, <a href="https://bigdatatechwarsaw.eu/prelegenci/bartosz-los/">Bartek Łoś</a>, presented how we have grown 10x within 2 years. Missed the talk? Here are <a href="/files/bigdatatech-2.pdf">the slides</a>:
+
+<a href="/files/bigdatatech-2.pdf"><img src="/pics/bigdatatech-2.png" style="margin-top:-1em; margin-bottom: -3em;"></a>
+
+Hope to see you next time!
+

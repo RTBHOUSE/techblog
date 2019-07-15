@@ -3,7 +3,9 @@ layout: post
 title:  "See our 3D printer LIVE"
 date:   2018-02-26 14:05:00 +0200
 author: Bartłomiej Romański <bartlomiej.romanski@rtbhouse.com>
-image: "img/home-bg.jpg"
+image:  "img/home-bg.jpg"
+draft:  true
+hidden: true
 
 subtitle:    "Live-streaming from our office hackerspace."
 description: "Live-streaming from our office hackerspace."

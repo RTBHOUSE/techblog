@@ -3,7 +3,8 @@ layout: post
 title:  "Kafka Workers as an alternative to Kafka Connect"
 date:   2020-03-31 20:30:00 +0200
 author: Tomasz Uliński <tomasz.ulinski@rtbhouse.com>
-image: "img/home-bg.jpg"
+image: "pics/tulinski1-use-case.svg"
+photo: "img/home-bg.jpg"
 
 subtitle:    "High performance and scalability."
 description: "High performance and scalability."

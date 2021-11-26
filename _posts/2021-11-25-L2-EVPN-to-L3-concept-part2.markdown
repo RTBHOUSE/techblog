@@ -318,7 +318,7 @@ So forcing right destination MAC for 169.254.0.1 in neighbor table seems to be n
 
 [SONIC is forcing use of IPv6 global addresses on interfaces to establish IPv6 BGP session](https://github.com/Azure/sonic-frr/issues/16#issuecomment-520587718).
 Additionally, [router advertiser](https://en.wikipedia.org/wiki/Neighbor_Discovery_Protocol) (RA) could be sent only from link local IPv6 that was mapped to switch ASIC.
-Due to these limitations, seemsm to be impossible to use BGP Unnumbered directly on sub port (at least we were unable to do so). So we needed a workaround.
+Due to these limitations, it seems to be impossible to use BGP Unnumbered directly on sub port (at least we were unable to do so). We needed a workaround
 We figured out that it is necessary to manually set both IPv6 Global and IPv6 link local addresses on each interface 
 to allow SONIC to send RA and allow BGP session to establish over Global IPv6.
 
@@ -338,7 +338,7 @@ Each interface has IPv6 addresses assigned by those SONIC CLI commands:
 
 ```
 VRF=2
-SUB_PORT_VLAN_NUMBER=$((300+$VRF)) # warning, interface name lenght is limited to 15 chars so SUB_PORT_VLAN_NUMBER should be short.
+SUB_PORT_VLAN_NUMBER=$((300+$VRF)) # warning, interface name length is limited to 15 chars so SUB_PORT_VLAN_NUMBER should be short.
 
 for E in ${SRV_PORTS[@]}
 do
@@ -356,7 +356,7 @@ done
 ```
 
 ### FRR config
-Fore each sub port interface we need to be configure FRR/zebra to send RA packets according to the IPv6 magic formula:
+For each sub port interface we need to configure FRR/zebra to send RA packets according to the IPv6 magic formula:
 
 ```
 interface Ethernet0.302 vrf Vrf2
@@ -516,7 +516,7 @@ Goals:
      - sub port interface id/number to select the network VRF
   
 
-In our opinion it is good practice to get rid of new kernel/systemd interface names, so interfaces names on each hardware will be identical.
+In our opinion it is good practice to get rid of new kernel/systemd interface names, so interface names on each type of hardware is identical.
 Usually it is done by adding kernel parameters:
 ```
 net.ifnames=0 biosdevname=0
@@ -643,7 +643,7 @@ It would be nice to have native [LLDP Peer Discovery](https://datatracker.ietf.o
 Unfortunately, this feature has not been implemented yet. We decided to write simple scripts based on **lldpd** linux package
 to discover server peers. Here is a current PoC that we are working on.
 
-  - service to monitor LLDP changes and write all detected BGP peers to /etc/rtbbgp/peers directory  :
+  - service to monitor LLDP changes and write all detected BGP peers to /etc/rtbbgp/peers directory:
 
 ```
 $ systemctl status lldp-peer-dicovery.service
@@ -692,7 +692,7 @@ mkdir -p $PEERDIR
 ( lldpcli -f keyvalue show neighbors ; lldpcli -f keyvalue watch ) | \
 while read -r line
 do
-# lets find switch numebrs, it is alweys firs
+# lets find switch numbers, it is alweys first
 if [[ "$line" =~ chassis.name=.*([0-9])$ ]]
 then
   SWNR="${BASH_REMATCH[1]}"
@@ -726,8 +726,8 @@ done
 
 ### Server FRR - config generator 
 Servers have simple FRR configuration generator script. Additional systemd service will generate and reload FRR config each time a new peer is added to /etc/rtbbgp/peers.
-As long as switch have IPv6 configured on sub ports according to the magic formula this allows for server connection do be phisicaly moved (online) between ports or even devices.
-(Nice fature to have if remote hands are not careful in DC :) ):
+As long as switch has IPv6 configured on sub ports according to the magic formula, server connection can be physically moved (online) between ports or even devices.
+(Nice fature to have, if remote hands are not careful in DC :) ):
 
 ```
 $ systemctl status frr-reload.path
@@ -1033,6 +1033,6 @@ Total number of prefixes 1
 
 
 
-Please continue to the next post if You interested to find more about how 
+Please continue to the next post, if you want to find more about how 
 we connected those L3 SONIC switches to old EVPN/BGP network.
 

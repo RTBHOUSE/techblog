@@ -12,19 +12,19 @@ subtitle:    "Part 2 - connecting a server to a router (switch) in L3"
 {:toc}
 
 
-# Motivation ( for server to switch connections design ) 
- - L2 network is growing and soon it will reach it's limits.We need to start adding new servers in "L3" mode to avoid broadcasts and long ARP tables, 
+# Motivation (for server to switch connections design) 
+ - L2 network is growing and soon it will reach its limits. We need to start adding new servers in "L3" mode to avoid broadcasts and long ARP tables, 
    but we would like to keep current features:
-   - servers needs to be connected in redundant manner ( one server to at least two switches ) and if possible we would like to speed up fallback time
-   - we would like to keep clean network separation between bare-metal servers on network devices in L3 the same as we had VLANs/VXLANs in L2
- - "Server IP address" in L3 network should work the same as server IP address in old L2 network:  server IP addres as endpoint for the connections to the deployed app
- - we would like to switch [NOS](https://en.wikipedia.org/wiki/Network_operating_system) to more open and commonly used but with less fatures: switch to SONIC
+   - servers need to be connected in redundant manner (one server to at least two switches), and - if possible - we would like to speed up fallback time
+   - we would like to keep clean network separation between bare-metal servers on network devices in L3, the same as we had using VLANs/VXLANs in L2
+ - "Server IP address" in L3 network should work the same as server IP address in old L2 network: server IP addres as endpoint for the connections to the deployed app
+ - we would like to switch [NOS](https://en.wikipedia.org/wiki/Network_operating_system) to more open and commonly used, but with less fatures: switch to SONIC
 
 
 
 # Considerations
  
-For typical server deployment, during the network configuration, there is assigning server IP and adding default gateway task.
+For typical server deployment, during the network configuration, there is an assigning server IP and adding default gateway task.
 It could be done automatically via DHCP protocol or statically via server network configuration.
 The task is not as easy, when connecting multiple server interfaces to multiple routers (switches) in L3.
 Configuration will usually require:
@@ -40,7 +40,7 @@ Configuration will usually require:
 
 Let's consider a scenario, where we have a server with four 25Gbps interfaces: eth0, eth1, eth2, eth3 and we are connecting
 it to the data center network in a redundant manner via two network devices SW1 and SW2. 
-When everything is working, server have 100Gbps connection to the network. When one of the switches is down, we can use only half of that.
+When everything is working, server has 100Gbps connection to the network. When one of the switches is down, we can use only half of that.
 
 
 ## L2/MLAG - typical traditional scenario and issues
@@ -139,7 +139,7 @@ Vrf2   Vlan2            # <- uplink, fallow up blog for part-3
 
 Each production network will have a different unique pair of VRF and sub port number.
 
-PXE/deploy network also have its own VRF but since it requires native port.  L3 interface needs to be terminated on Vlan,
+PXE/deploy network also has its own VRF, but since it requires native port, L3 interface needs to be terminated on Vlan,
 for example:
 ```
 $ show vrf Vrf110
@@ -226,15 +226,15 @@ $ show vlan brief # <--- Click this to show more
 
 ### Sonic Gotchas
 
-  - In above setup we discovered that SONIC sometimes do not send "ARP who has" do default GW in PXE/deploy network. 
+  - In above setup we discovered that SONIC sometimes does not send "ARP who has" to default GW in PXE/deploy network. 
     It could be caused by [keepalived](https://keepalived.readthedocs.io/en/latest/introduction.html) that we have configured on the default GW 
-    (keepalived is configured to  periodically send [GARP](https://www.practicalnetworking.net/series/arp/gratuitous-arp/) packets)
-    or due to long inactivity ( server untagged interface is used only for deployment and for rootfs decryption during boot ). 
+    (keepalived is configured to periodically send [GARP](https://www.practicalnetworking.net/series/arp/gratuitous-arp/) packets)
+    or due to long inactivity (server untagged interface is used only for deployment and for rootfs decryption during boot). 
     This issue can be mitigated by setting: ``` sysctl -w net.ipv4.conf.Vlan110.arp_accept=1 ``` on SONIC interface.
   - Configuration order seems to matter. So far we deployed sub ports + untagged vlan to the server concept
-    on broadcom Tomahawk,Tomahawk2 and Trident3 based devices. Everything seems to work fine as long as untagged vlan is configured last.
-    For each setup change we clear device configuration by ```config realod``` then we apply subport and vlan configuration
-    in right order. SONIC become more stable by each release, this may not be the case right now.
+    on broadcom Tomahawk, Tomahawk2 and Trident3 based devices. Everything seems to work fine as long as untagged vlan is configured last.
+    For each setup change, we clear device configuration by ```config realod```, then we apply subport and vlan configuration
+    in the right order. SONIC becomes more stable by each release, this issue may be already solved.
 
   
 

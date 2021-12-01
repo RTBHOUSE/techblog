@@ -55,7 +55,8 @@ Cisco published interesting book: [Building Data Centers with VXLAN BGP EVPN](ht
 and few months later Cumulus Linux presented a new release, adding EVPN functionality.
 We saw VXLAN BGP EVPN as a potential solution for our scaling and stability issues.
 The release was quickly deployed on production environment and basic EVPN set up using Cisco guidelines.
-Leaf switches encapsulated L2 into VXLAN tunnels and SPINE switches become L3 routers.
+Leaf switches encapsulated L2 into VXLAN tunnels and [SPINE](https://www.theasciiconstruct.com/post/cumulus-basics-part-vi-vxlan-l2vnis-with-bgp-evpn)
+switches become L3 routers.
 This design eliminated potential L2 loops at second and third network layer.
 Our conclusions regarding VXLAN BGP EVPN network architecture after several years of experience
 (on the most cost-effective devices - mainly Broadcom Tomahawk based) are as follows:

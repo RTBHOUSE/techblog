@@ -61,8 +61,8 @@ This design eliminated potential L2 loops at the second and third network layers
 Our conclusions regarding VXLAN BGP EVPN network architecture after several years of experience
 (on the most cost-effective devices - mainly Broadcom Tomahawk based) are as follows:
 
-  - stability/visibility/debugging is lacking: whenever network device failed, we could observe strange things, for example: Some random switch started to announce network layer reachability information (NLRI) that was bogus.
-   We could not reproduce this problem, and it occurred on production several times. 
+  - stability/visibility/debugging is lacking: whenever a network device failed, we could observe strange things, for example random switch started to announce network layer reachability information (NLRI) that was bogus.
+   We could not reproduce this problem, and it occurred in production several times. 
   - depending on the silicon chip model, device behaviour could differ, and lack of chip feature could hit you hard
   - in real life VXLAN BGP EVPN is hard to extend and modify on production. 
     - In one case, we tried to enable [ARP/ND suppression](https://docs.nvidia.com/networking-ethernet-software/cumulus-linux-42/Network-Virtualization/Ethernet-Virtual-Private-Network-EVPN/Basic-Configuration/#arp) and [it blocked keepalived traffic](https://github.com/mgrzybowski/cldemo-arp-suppression-test#garp-flood---is-suppres)

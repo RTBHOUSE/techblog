@@ -19,7 +19,7 @@ Here we would like to share our experiences regarding network upgrades and opera
 # Network generations
 
 ## First racks - switch stacking
-In 2013/2014 due to lacking network capacity/stability in our environment provided by an external provider, we started to deploy our own racks.
+In 2013/2014, due to lacking network capacity/stability in our environment provided by an external provider, we started to deploy our own racks.
 At the beginning we used Brocade ICX6610 switches and we stacked them in 80Gbps loops:
 
 ![image alt <>](/pics/brocade-stack-2014-03.png)
@@ -34,9 +34,8 @@ DMZ for front servers. This setup was optimal from the cost perspective at that 
 
 ## Bare-metal switches: [Cumuls Linux](https://www.nvidia.com/en-us/networking/ethernet-switching/cumulus-linux/) + CLAG/MLAG
 
-In 2015, we deployed first racks where network was based on bare metal switches [Supermicro SSE-X3648R](https://www.supermicro.com/en/products/accessories/networking/sse-x3648s.php) 
-with Cumulus Linux as [NOS](https://en.wikipedia.org/wiki/Network_operating_system), and connected them to existing Brocade stack using 4x10Gbps LACP uplink.
-At that time bare metal switch concept, DAC cables were emerging technologies and Cumulus Linux was very immature. We spammed Cumlus support with bug raports.
+In 2015, we deployed first racks where network was based on bare metal [Supermicro SSE-X3648R](https://www.supermicro.com/en/products/accessories/networking/sse-x3648s.php) switches with Cumulus Linux as [NOS](https://en.wikipedia.org/wiki/Network_operating_system), and connected them to the existing Brocade stack using 4x10Gbps LACP uplink.
+At that time bare metal switch concept, DAC cables were emerging technologies and Cumulus Linux was very immature. We spammed Cumlus support with bug reports.
 Despite that, we achieved the majority of our goals:
 
   - new 10Gpbs infrastructure/network cost increase vs old 1Gbps was minimal due to relatively inexpensive hardware

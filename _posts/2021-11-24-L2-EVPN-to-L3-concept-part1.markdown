@@ -11,7 +11,7 @@ subtitle:    "Part 1 - RTB House network history"
 
 RTB House has grown from several dedicated servers in 2012 to several DC locations.
 Server infrastructure is constantly expanding to keep up with business needs.
-Currently, the platform is handling around 10 million of http bid requests per second globally.
+Currently, the platform is handling around 10 million of HTTP bid requests per second globally.
 Network architecture changed over the years, and migrating to L3-only approach is hopefully the last big architectural change.
 Here we would like to share our experiences regarding network upgrades and operations.
 

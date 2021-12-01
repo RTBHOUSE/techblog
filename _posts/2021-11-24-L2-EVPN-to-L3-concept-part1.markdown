@@ -35,7 +35,7 @@ DMZ for front servers. This setup was optimal from the cost perspective at that 
 ## Bare-metal switches: [Cumuls Linux](https://www.nvidia.com/en-us/networking/ethernet-switching/cumulus-linux/) + CLAG/MLAG
 
 In 2015 we deployed first racks where network was based on bare metal [Supermicro SSE-X3648R](https://www.supermicro.com/en/products/accessories/networking/sse-x3648s.php) switches with Cumulus Linux as [NOS](https://en.wikipedia.org/wiki/Network_operating_system) and connected them to the existing Brocade stack using 4x10Gbps LACP uplink.
-At that time bare metal switch concept, DAC cables were emerging technologies and Cumulus Linux was very immature. We spammed Cumlus support with bug reports.
+At that time bare metal switch concept and DAC cables were emerging technologies and Cumulus Linux was very immature. We spammed Cumlus support with bug reports.
 Despite that, we achieved the majority of our goals:
 
   - new 10Gpbs infrastructure/network cost increase vs old 1Gbps was minimal due to relatively inexpensive hardware

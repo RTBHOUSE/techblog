@@ -46,7 +46,7 @@ Despite that, we achieved the majority of our goals:
   ![image alt <>](/pics/mlag-basic-setup.png)
     - MLAG LACP in a fast mode could wait up to 3-4 seconds to disable interface in a group, 
       which caused some of our server cluster nodes to flap and was very annoying.
-    - Cumulus MLAG immaturity caused problems that we were unable to reproduce ( for example from time to time a pair of switches stopped to see each other via peerlink ) .
+    - Cumulus MLAG immaturity caused problems that we were unable to reproduce (for example from time to time a pair of switches stopped seeing each other via peerlink).
 
 ## VXLAN BGP EVPN
 Pure L2 network can not be scaled up indefinitely. As racks rows were added,

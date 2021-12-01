@@ -57,7 +57,7 @@ We saw VXLAN BGP EVPN as a potential solution for our scaling and stability issu
 The release was quickly deployed on production environment and basic EVPN set up using Cisco guidelines.
 Leaf switches encapsulated L2 into VXLAN tunnels and SPINE switches become L3 routers.
 This design eliminated potential L2 loops at second and third network layer.
-Our conclusions regarding VXLAN BGP EVPN network architecture after few years of experience
+Our conclusions regarding VXLAN BGP EVPN network architecture after several years of experience
 (on the most cost-effective devices - mainly Broadcom Tomahawk based) are as follows:
 
   - stability/visability/debugging is lacking: whenever network device failed, we could observe strange things, for example: Some random switch started to announce network layer reachability information (NLRI) that was bogus.

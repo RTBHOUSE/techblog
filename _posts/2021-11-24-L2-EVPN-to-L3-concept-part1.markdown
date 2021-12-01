@@ -41,7 +41,7 @@ Despite that, we achieved the majority of our goals:
   - new 10Gpbs infrastructure/network cost increase vs old 1Gbps was minimal due to relatively inexpensive hardware
   - 1ms time to transfer a 1MB user profile from database to the compute server thanks to DACs and 10Gbps NICs.
    (Those were times when, by default, the Linux distro's kernel had a single queue on NICs,
-    so everything needed to be tuned manually, according to https://www.kernel.org/doc/Documentation/networking/scaling.txt )
+    so everything needed to be tuned manually, according to [https://www.kernel.org/doc/Documentation/networking/scaling.txt](https://www.kernel.org/doc/Documentation/networking/scaling.txt))
   - availability: MLAG allowed to connect the servers to two redundant devices, but this implementation was not perfect:
   ![image alt <>](/pics/mlag-basic-setup.png)
     - MLAG LACP in a fast mode could wait up to 3-4 seconds to disable interface in a group, 

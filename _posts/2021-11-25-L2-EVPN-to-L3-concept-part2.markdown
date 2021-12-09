@@ -18,9 +18,7 @@ subtitle:    "Part 2 - connecting a server to a router (switch) in L3"
    - servers need to be connected in redundant manner (one server to at least two switches), and - if possible - we would like to speed up fallback time
    - we would like to keep clean network separation between bare-metal servers on network devices in L3, the same as we had using VLANs/VXLANs in L2
  - "Server IP address" in L3 network should work the same as server IP address in old L2 network: server IP addres as endpoint for the connections to the deployed app
- - we would like to switch [NOS](https://en.wikipedia.org/wiki/Network_operating_system) to more open and commonly used, but with less fatures: switch to SONIC
-
-
+ - we want to change switch's [NOS](https://en.wikipedia.org/wiki/Network_operating_system) to more open and commonly used one. We have chosen [SONiC](https://en.wikipedia.org/wiki/SONiC_(operating_system)). SONiC has less features than NOS that we are currently using. That is both advantage and disadvantage. Leass features means simpler configuration.
 
 # Considerations
  

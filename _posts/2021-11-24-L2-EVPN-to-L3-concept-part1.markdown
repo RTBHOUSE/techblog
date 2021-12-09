@@ -102,6 +102,6 @@ without the need to migrate entire locations to the new architecture.
 If you are interested in the implementation details, please continue to the next posts. 
 
 P.S. Alternative solutions
-  * EVPN Routing was too complicated for us, ASIC limitations are hard to predict, and when you need a feature on an entire DC it may require devices upgrade.
+  * EVPN Routing was too complicated for us, ASIC limitations are hard to predict, and when you need a feature on an entire DC, it may require an upgrade of devices.
   * External router connecting multiple L2 networks will not be able to handle the required volume of traffic
   * Simple L3 on native vlan will break network separation we relay on for bare-metal servers

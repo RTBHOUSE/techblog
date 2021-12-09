@@ -103,5 +103,5 @@ If you are interested in the implementation details, please continue to the next
 
 P.S. Alternative solutions
   * EVPN Routing was too complicated for us, ASIC limitations are hard to predict, and when you need a feature on an entire DC, it may require an upgrade of devices.
-  * External router connecting multiple L2 networks will not be able to handle the required volume of traffic
-  * Simple L3 on native vlan will break network separation we relay on for bare-metal servers
+  * External router connecting multiple L2 networks will not be able to handle the required volume of traffic.
+  * Simple L3 on native VLAN will break network separation we relay on for bare-metal servers.

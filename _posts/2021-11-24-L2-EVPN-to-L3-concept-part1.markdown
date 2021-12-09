@@ -78,7 +78,7 @@ After adding racks after racks, we ended up with a basic VXLAN BGP EVPN + MLAG d
 $ arp -an  | grep 'on bond0' | grep -v  incomplete | wc -l 
 1435
 ````
-MACs addresses.
+MAC addresses.
 
 To be able to accommodate so large ARP table on the host, some sysctl's need to be tuned up. Our production settings are as follows:
 ```

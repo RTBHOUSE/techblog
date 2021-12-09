@@ -98,7 +98,7 @@ As you can imagine, to grow more,  we are in need of a network architecture that
 It was decided that new servers should be connected to the switches in the "L3" way to avoid broadcast domains.
 We will keep current VLAN/VXLAN separation in old "L2" part of network and replace it with VRF in "L3".
 Then we will connect those  "L2" and "L3" networks together by as many uplinks as needed 
-without the need of migrate entire locations to new architecture.
+without the need to migrate entire locations to the new architecture.
 If you are interested in the implementation details, please continue to the next posts. 
 
 P.S. Alternative solutions

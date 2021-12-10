@@ -22,13 +22,19 @@ subtitle:    "Part 2 - connecting a server to a router (switch) in L3"
 
 # Considerations
  
-For typical server deployment, during the network configuration, there is an assigning server IP and adding default gateway task.
-It could be done automatically via DHCP protocol or statically via server network configuration.
-The task is not as easy, when connecting multiple server interfaces to multiple routers (switches) in L3.
-Configuration will usually require:
- - assigning server IP for service on server "lo" interface
- - assigning IP address for each server interface facing router
- - assigning IP address for each GW/Peer 
+For typical server deployment, during the network configuration, there are two tasks:
+ - assigning IP to server
+ - adding default gateway
+
+It could be done automatically via DHCP or statically via server network configuration.
+The task is not easy when connecting multiple server interfaces to multiple routers (switches) in L3.
+The configuration will usually require:
+ - assigning IP(s) server "lo" interface
+   - each physical host need its own IP address
+   - some services (applications) need their own IP addresses because they use the same TCP listening ports as other services
+   - we use anycast in some of the distributed services and we need to configure the same IP address on multiple physical servers
+ - assigning an IP address for each server interface facing the router
+ - assigning an IP address for each GW/Peer
  - routing daemon and routing configuration 
  
 

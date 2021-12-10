@@ -245,10 +245,12 @@ $ show vlan brief # <--- Click this to show more
 
 # BGP Unnumbered like  - SONIC configuration
 
-BGP Unnumbered is a method to connect two (theoretically more possible, but we did not find any implementation)
-BGP peers without the need to specify peer IP address. Part of it is based on [rfc5549](https://datatracker.ietf.org/doc/html/rfc5549) 
-and the rest is vendor specific. (Despite that the term "BGP Unnumbered" is widely used in the network industry,
-it has no RFC or standard, and some vendors may understand it differently)
+BGP Unnumbered is a method to connect two (theoretically more is possible, but we did not find any implementation that supports it)
+BGP peers without the need to specify peer's IP address. Part of it is based on [rfc5549](https://datatracker.ietf.org/doc/html/rfc5549) 
+and the rest is vendor specific.
+(Despite that the term "BGP Unnumbered" is widely used in the network industry,
+it has no RFC or standard, and some vendors may understand it differently.)
+
 The idea behind BGP Unnumbered is to leverage IPv6 standard features to find a peer and establish BGP session:
   - link local IPv6 address creation on each interface, allows to automatically assign IP for both sides
   - Router Advertisements ICMPv6 packets allows to inform the other side, what IP is assigned to the router 

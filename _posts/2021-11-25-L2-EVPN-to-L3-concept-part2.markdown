@@ -43,8 +43,8 @@ The configuration will usually require:
 ![image alt <>](/pics/server-4xeth-to-2xsw-diagram.png)
 
 Let's consider a scenario, where we have a server with four 25Gbps interfaces: eth0, eth1, eth2, eth3 and we are connecting
-it to the data center network in a redundant manner via two network devices SW1 and SW2. 
-When everything is working, server has 100Gbps connection to the network. When one of the switches is down, we can use only half of that.
+it to the data center network in a redundant manner via two network devices: SW1 and SW2. 
+When everything is working, the server has a 100Gbps connection to the network. When one of the switches is down, we can use only half of that.
 
 
 ## L2/MLAG - typical traditional scenario and issues

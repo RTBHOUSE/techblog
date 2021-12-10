@@ -54,9 +54,9 @@ and SW1 and SW2 switches must be configured in the [MLAG](https://docs.nvidia.co
 
 This kind of setup has some disadvantages:
   - LACP does not fully verify the link's state, so if for example RX link is blocked (single fiber cut in a dual fiber connection), the port will be up in the group in one direction and packets could be dropped on that link.
-  - LACP link down detection is slow (only two modes to chose from, in fast mode LACPDU packet is sent every second, Link is down after 3 frames are lost) 
-  - MLAG cluster usually sacrifices few physical ports for peerlink between switches (depending on silicon chip) 
-  - When LACP port group is configured, you need to connect servers to the exact ports in the group.
+  - LACP link down detection is slow (only two modes to choose from, in fast mode LACPDU packet is sent every second, Link is down after 3 frames are lost).
+  - MLAG cluster usually sacrifices few physical ports for peerlink between switches (depending on silicon chip).
+  - When the LACP port group is configured, you need to connect servers to the exact same ports in the group.
   - From the switch MLAG cluster perspective, disaggregated LACP interfaces facing the server can not be configured as L3 (IP address can't be  assigned) and they need to be in the bridge (probably because MLAG+STP are closely connected in the implementation to avoid loops).
 
 In this MLAG example scenario, network layer separation between servers could be achieved by adding MLAG interfaces to a separate VLANs.

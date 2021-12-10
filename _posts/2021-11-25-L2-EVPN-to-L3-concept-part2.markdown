@@ -256,7 +256,7 @@ The idea behind BGP Unnumbered is to leverage IPv6 standard features to find a p
   - Router Advertisements ICMPv6 packets allow to inform the other side what IP is assigned to the router 
     and what IPv6 pool is available to the peers.
 
-Routing demon then can discover peer IPV6 adddress on interface and using local IPV6 starts BGP session.
+Routing demon then can discover peer IPv6 adddress on interface and using local IPv6 address starts BGP session.
 Then rfc5549 is implemented to advertise IPv4 Network Layer Reachability Information (NLRI) via this IPv6 BGP session between discovered peers.
 
 IPv4 NLRI from the IPv6 peer needs a gateway. Since peer is IPv6, it could not be assigned as a gateway for IPv4, especially 

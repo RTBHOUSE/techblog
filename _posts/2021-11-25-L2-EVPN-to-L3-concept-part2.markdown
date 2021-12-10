@@ -53,7 +53,7 @@ a single interface (usually [LACP](https://en.wikipedia.org/wiki/Link_aggregatio
 and SW1 and SW2 switches must be configured in the [MLAG](https://docs.nvidia.com/networking-ethernet-software/cumulus-linux-42/Layer-2/Multi-Chassis-Link-Aggregation-MLAG/) cluster.
 
 This kind of setup has some disadvantages:
-  - LACP does not fully verify link state, so if for example RX link is blocked (single fiber cut in dual fiber connection), port will be up in the group on one direction and packets could be dropped on that link.
+  - LACP does not fully verify the link's state, so if for example RX link is blocked (single fiber cut in a dual fiber connection), the port will be up in the group in one direction and packets could be dropped on that link.
   - LACP link down detection is slow (only two modes to chose from, in fast mode LACPDU packet is sent every second, Link is down after 3 frames are lost) 
   - MLAG cluster usually sacrifices few physical ports for peerlink between switches (depending on silicon chip) 
   - When LACP port group is configured, you need to connect servers to the exact ports in the group.

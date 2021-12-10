@@ -150,7 +150,7 @@ $ show vrf Vrf110
 VRF     Interfaces
 ------  ------------
 Vrf110  Vlan210
-        Vlan110     # <- uplink, fallow up blog for part-3
+        Vlan110     # <- uplink, see part 3 of this blog series
 ```
 
 <details>

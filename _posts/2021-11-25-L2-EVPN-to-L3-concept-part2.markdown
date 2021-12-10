@@ -252,8 +252,8 @@ and the rest is vendor specific.
 it has no RFC or standard, and some vendors may understand it differently.)
 
 The idea behind BGP Unnumbered is to leverage IPv6 standard features to find a peer and establish BGP session:
-  - link local IPv6 address creation on each interface, allows to automatically assign IP for both sides
-  - Router Advertisements ICMPv6 packets allows to inform the other side, what IP is assigned to the router 
+  - Link local IPv6 address creation on each interface, allows to automatically assign IP for both sides.
+  - Router Advertisements ICMPv6 packets allow to inform the other side what IP is assigned to the router 
     and what IPv6 pool is available to the peers.
 
 Routing demon then can discover peer IPV6 adddress on interface and using local IPV6 starts BGP session.

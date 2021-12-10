@@ -335,10 +335,10 @@ IPv6 address formula for "fake BGP Unnumbered" interfaces was created to make as
     ipv6="fc00:0000:${SUB_PORT_VLAN_NUMBER}:$(( ${ETH_NUMBER} + 1000 * ${SW_NUMBER} ))::1/64"
     llipv6="fe80:0000:${SUB_PORT_VLAN_NUMBER}:$(( ${ETH_NUMBER} + 1000 * ${SW_NUMBER} ))::1/64" 
 ```
-  - SUB_PORT_VLAN_NUMBER: VLAN number that was assigned for the sub port interface, there is one number per VRF needed
-  - ETH_NUMBER: number of Ethernet interface, each IP address, even link local need to be unique, so it could be applied to the switch ASIC 
-  - SW_NUMBER: TOR switch number. (It could be beneficial to have more than two TOR switches, for N+1 redundancy)
-  - fc00::/7 - [Unique local addresses](https://en.wikipedia.org/wiki/Unique_local_address)
+  - SUB_PORT_VLAN_NUMBER: VLAN number that was assigned for the sub port interface, there is one number per VRF needed.
+  - ETH_NUMBER: Number of the Ethernet interface. Each IP address, even link local, need to be unique, so it could be applied to the switch ASIC.
+  - SW_NUMBER: ToR switch number. (It could be beneficial to have more than two ToR switches for N+1 redundancy).
+  - fc00::/7 - [Unique local addresses](https://en.wikipedia.org/wiki/Unique_local_address).
 
 Each interface has IPv6 addresses assigned by those SONIC CLI commands:
 

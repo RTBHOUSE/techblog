@@ -48,9 +48,9 @@ When everything is working, the server has a 100Gbps connection to the network. 
 
 
 ## L2/MLAG - typical traditional scenario and issues
-In typical/traditional approach eth0, eth1, eth2, eth3 interfaces on the server will be aggregated into
-single interface (usually [LACP](https://en.wikipedia.org/wiki/Link_aggregation) group) via [bonding or teaming](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/networking_guide/sec-comparison_of_network_teaming_to_bonding)
-and SW1, SW2 switches need to be configured in [MLAG](https://docs.nvidia.com/networking-ethernet-software/cumulus-linux-42/Layer-2/Multi-Chassis-Link-Aggregation-MLAG/) cluster.
+In the typical/traditional approach the eth0, eth1, eth2 and eth3 interfaces on the server will be aggregated into
+a single interface (usually [LACP](https://en.wikipedia.org/wiki/Link_aggregation) group) via [bonding or teaming](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/networking_guide/sec-comparison_of_network_teaming_to_bonding)
+and SW1 and SW2 switches must be configured in the [MLAG](https://docs.nvidia.com/networking-ethernet-software/cumulus-linux-42/Layer-2/Multi-Chassis-Link-Aggregation-MLAG/) cluster.
 
 This kind of setup has some disadvantages:
   - LACP does not fully verify link state, so if for example RX link is blocked (single fiber cut in dual fiber connection), port will be up in the group on one direction and packets could be dropped on that link.

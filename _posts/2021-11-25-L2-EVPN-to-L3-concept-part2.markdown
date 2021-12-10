@@ -228,17 +228,17 @@ $ show vlan brief # <--- Click this to show more
 </details>
 
 
-### Sonic Gotchas
+### SONiC Gotchas
 
-  - In above setup we discovered that SONIC sometimes does not send "ARP who has" to default GW in PXE/deploy network. 
+  - In above setup we discovered that SONiC sometimes does not send "ARP who has" to default GW in PXE/deploy network. 
     It could be caused by [keepalived](https://keepalived.readthedocs.io/en/latest/introduction.html) that we have configured on the default GW 
     (keepalived is configured to periodically send [GARP](https://www.practicalnetworking.net/series/arp/gratuitous-arp/) packets)
-    or due to long inactivity (server untagged interface is used only for deployment and for rootfs decryption during boot). 
-    This issue can be mitigated by setting: ``` sysctl -w net.ipv4.conf.Vlan110.arp_accept=1 ``` on SONIC interface.
-  - Configuration order seems to matter. So far we deployed sub ports + untagged vlan to the server concept
-    on broadcom Tomahawk, Tomahawk2 and Trident3 based devices. Everything seems to work fine as long as untagged vlan is configured last.
+    or due to long inactivity (server's untagged interface is used only for deployment and for rootfs decryption during boot). 
+    This issue can be mitigated by setting: ``` sysctl -w net.ipv4.conf.Vlan110.arp_accept=1 ``` on SONiC interface.
+  - Configuration order seems to matter. So far we deployed "sub ports + untagged VLAN to the server" concept
+    on Broadcom Tomahawk, Tomahawk 2 and Trident 3 based devices. Everything seems to work fine as long as untagged VLAN is configured last.
     For each setup change, we clear device configuration by ```config realod```, then we apply subport and vlan configuration
-    in the right order. SONIC becomes more stable by each release, this issue may be already solved.
+    in the right order. SONiC becomes more stable by each release, this issue may be already solved.
 
   
 

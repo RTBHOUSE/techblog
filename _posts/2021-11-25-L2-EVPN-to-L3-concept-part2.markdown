@@ -310,7 +310,7 @@ root@spsw1401:mgmt-vrf:~# ip n show | grep 169.254.0.1
 
 
 Implementation with fixed "169.254.0.1" as a fake gateway is limiting BGP Unnumbered to only single peer (!) per interface.
-(because even link local IP address must be unique per interface/network) 
+(Because even link local IP address must be unique per interface/network.)
 
 On recent Linux kernels and latest FRR implementations, protocols were mixed by kernel developers (LoL):
 
@@ -322,11 +322,11 @@ default nhid 2044 proto bgp metric 20
 So forcing right destination MAC for 169.254.0.1 in neighbor table seems to be no longer required.
 
 
-[SONIC is forcing use of IPv6 global addresses on interfaces to establish IPv6 BGP session](https://github.com/Azure/sonic-frr/issues/16#issuecomment-520587718).
-Additionally, [router advertiser](https://en.wikipedia.org/wiki/Neighbor_Discovery_Protocol) (RA) could be sent only from link local IPv6 that was mapped to switch ASIC.
-Due to these limitations, it seems to be impossible to use BGP Unnumbered directly on sub port (at least we were unable to do so). We needed a workaround
+[SONiC is forcing use of IPv6 global addresses on interfaces to establish IPv6 BGP session](https://github.com/Azure/sonic-frr/issues/16#issuecomment-520587718).
+Additionally, [router advertisement](https://en.wikipedia.org/wiki/Neighbor_Discovery_Protocol) (RA) could be sent only from link local IPv6 that was mapped to switch ASIC.
+Due to these limitations, it seems to be impossible to use BGP Unnumbered directly on sub port (at least we were unable to do so). We needed a workaround.
 We figured out that it is necessary to manually set both IPv6 Global and IPv6 link local addresses on each interface 
-to allow SONIC to send RA and allow BGP session to establish over Global IPv6.
+to allow SONiC to send RA and allow BGP session to be established over Global IPv6.
 
 ### IPv6 address magic formula
 IPv6 address formula for "fake BGP Unnumbered" interfaces was created to make assigning IPv6 addresses more manageable:

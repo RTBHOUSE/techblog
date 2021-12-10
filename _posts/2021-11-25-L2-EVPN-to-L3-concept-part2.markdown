@@ -66,7 +66,7 @@ In this MLAG example scenario, network layer separation between servers could be
 As mentioned in [Part1]({% post_url 2021-11-24-L2-EVPN-to-L3-concept-part1 %}) we intend to replace VLAN/VXLAN 
 by VRF number as a network identifier, to implement network layer separations. 
 Some of our servers may need to be in more than one network.
-For example a front server needs to be connected to the DMZ VLAN/VRF(network) and to the backend VLAN/VRF(network).
+For example a front server needs to be connected to the DMZ VLAN/VRF (network) and to the backend VLAN/VRF (network).
 In L3 we can create dedicated sub port for each Ethernet port on the switch device, then bind this sub port to the chosen VRF.
 The following example shows production network ID "2" and ID "3" that will be available to the servers on "302" and "303" sub port interface:
 
@@ -81,7 +81,7 @@ $ show vrf  Vrf2 # <--- Click this to show more
 {% highlight text %}
 VRF    Interfaces
 -----  ---------------
-Vrf2   Vlan2            # <- uplink, fallow up blog for part-3
+Vrf2   Vlan2            # <- uplink, see part 3 of this blog series
        Ethernet16.302
        Ethernet8.302
        Ethernet17.302

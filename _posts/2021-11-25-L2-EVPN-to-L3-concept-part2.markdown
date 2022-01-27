@@ -513,12 +513,11 @@ Total number of neighbors 55
 # Server side configuration (Linux - Debian/Ubuntu) 
 
 Goals:
-  - identical config on any hardware
-  - minimal network config requirements
+  - identical config on all server hardware
+  - minimal network config requirements:
      - hostname 
      - IPv4 address to advertise
      - sub port interface id/number to select the network VRF
-  
 
 In our opinion it is good practice to get rid of new kernel/systemd interface names, so interface names on each type of hardware is identical.
 Usually it is done by adding kernel parameters:

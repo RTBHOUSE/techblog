@@ -390,11 +390,11 @@ interface Ethernet104.302 vrf Vrf2
 !  ...
 ```
 
-  - **ipv6 nd prefix fc00:0:302:1100::/64** : is advertising fc00:0:302:1100::/64 network for the clients to use.
+  - `ipv6 nd prefix fc00:0:302:1100::/64`: is advertising fc00:0:302:1100::/64 network for the clients to use.
      fc00:0:302:1100::1/64 will be on sub port interface according to magic formula that was mentioned above.
      Any other address in this network could be taken by the connected server.
-  - **ipv6 nd ra-interval 5** :  increase rate for sending RA
-  - **no ipv6 nd suppress-ra** : enabling [zebra](https://docs.frrouting.org/en/latest/zebra.html) to send RA ICMPv6 frames on the interface
+  - `ipv6 nd ra-interval 5`: increase rate for sending RA.
+  - `no ipv6 nd suppress-ra`: enabling [zebra](https://docs.frrouting.org/en/latest/zebra.html) to send RA ICMPv6 frames on the interface.
 
 
 For each VRF router we configure server group and **listen range** to allow any server that has acquired 

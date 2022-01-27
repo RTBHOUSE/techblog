@@ -722,9 +722,9 @@ done
 </details>
 
 ### Server FRR - config generator 
-Servers have simple FRR configuration generator script. Additional systemd service will generate and reload FRR config each time a new peer is added to /etc/rtbbgp/peers.
+Servers have simple FRR configuration generator script. Additional systemd service will generate and reload FRR config every time a new peer is added to `/etc/rtbbgp/peers`.
 As long as switch has IPv6 configured on sub ports according to the magic formula, server connection can be physically moved (online) between ports or even devices.
-(Nice fature to have, if remote hands are not careful in DC :) ):
+(It is a nice fature to have, if remote hands are not careful in data center. 🙂)
 
 ```
 $ systemctl status frr-reload.path

@@ -548,13 +548,10 @@ $ cat /etc/network/interfaces # <--- Click this to show content
 auto  lo
 iface lo inet loopback
 
-
 auto  lo:101
 iface lo:101 inet static
     address 172.16.2.200
     netmask 255.255.255.255
-
-
 
 allow-hotplug eth0
 iface  eth0  inet manual
@@ -575,7 +572,6 @@ iface eth1.302 inet manual
    up echo 0 > /proc/sys/net/ipv6/conf/$IFACE/use_tempaddr
    # 2 Overrule forwarding behaviour. Accept Router Advertisements even if forwarding is enabled.
    up echo 2 > /proc/sys/net/ipv6/conf/$IFACE/accept_ra
-
 
 allow-hotplug eth2
 iface  eth2  inet manual

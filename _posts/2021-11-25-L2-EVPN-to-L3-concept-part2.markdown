@@ -430,7 +430,7 @@ ip prefix-list to-servers-prefixes seq 500 deny any
 
 
 ### BGP summary
-After establishing sessions, diagnosing/inspecting/finding interfaces is pretty straight forward:
+After establishing sessions, diagnosing/inspecting/finding interfaces is pretty straightforward:
 
 <details>
 <summary>

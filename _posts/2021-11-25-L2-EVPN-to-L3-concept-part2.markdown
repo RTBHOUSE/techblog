@@ -1024,12 +1024,9 @@ Origin codes:  i - IGP, e - EGP, ? - incomplete
 Total number of prefixes 1
 ```
 
-
 ### Nice unexpected features
- - Docker default network/NAT is working perfectly fine and does not require any additional changes on the system
 
-
+Docker default network/NAT is working perfectly fine and does not require any additional changes on the system
 
 Please continue to the next post, if you want to find more about how 
-we connected those L3 SONIC switches to old EVPN/BGP network.
-
+we connected those L3 SONiC switches to the old EVPN/BGP network.

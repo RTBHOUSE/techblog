@@ -732,8 +732,9 @@ $ systemctl status frr-reload.path
      Loaded: loaded (/etc/systemd/system/frr-reload.path; enabled; vendor preset: enabled)
      Active: active (waiting) since Tue 2021-08-24 08:16:22 UTC; 2 weeks 6 days ago
    Triggers: ● frr-reload.service
+```
 
-Warning: journal has been rotated since unit was started, output may be incomplete.
+```
 $ systemctl status frr-reload.service
 ● frr-reload.service - Build config and reload frr service
      Loaded: loaded (/etc/systemd/system/frr-reload.service; enabled; vendor preset: enabled)
@@ -803,7 +804,7 @@ echo "
 hostname $(hostname)
 
 router bgp 65108
- bgp router-id $(ifdata  -pa 'lo:101')       `# lo:101 ro routerid`
+ bgp router-id $(ifdata -pa 'lo:101')       `# lo:101 ro routerid`
  bgp default show-hostname
  bgp default show-nexthop-hostname
  bgp bestpath as-path multipath-relax
@@ -859,10 +860,9 @@ end
 {% endhighlight %}
 </details>
 
-
 FRR config highlights:
-  - **route-map EXPORTLO**: will discover lo addresses and advertise them to the switches. You can add/remove lo addresses at the runtime and they will be discovered and advertised.
-  - **multipath-relax**: Enables ECMP
+  - `route-map EXPORTLO`: will discover lo addresses and advertise them to the switches. You can add/remove lo addresses at the runtime and they will be discovered and advertised.
+  - `multipath-relax`: Enables ECMP.
  
 ### Final result on server side
 Example server routing table (four interfaces connected):

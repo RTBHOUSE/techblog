@@ -994,7 +994,7 @@ Total number of neighbors 4
 ```
 
 ```
-b109.creativecdn.net# show  ip bgp ipv4 neighbors lesw2801 received-routes
+b109.creativecdn.net# show ip bgp ipv4 neighbors lesw2801 received-routes
 BGP table version is 514, local router ID is 172.16.2.109, vrf id 0
 Default local pref 100, local AS 65108
 Status codes:  s suppressed, d damped, h history, * valid, > best, = multipath,

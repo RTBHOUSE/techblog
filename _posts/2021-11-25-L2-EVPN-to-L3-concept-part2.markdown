@@ -642,7 +642,7 @@ It would be nice to have native [LLDP Peer Discovery](https://datatracker.ietf.o
 Unfortunately, this feature has not been implemented yet. We decided to write simple scripts based on **lldpd** linux package
 to discover server peers. Here is a current PoC that we are working on.
 
-  - service to monitor LLDP changes and write all detected BGP peers to /etc/rtbbgp/peers directory:
+Service monitors LLDP changes and writes all detected BGP peers to `/etc/rtbbgp/peers`.
 
 ```
 $ systemctl status lldp-peer-dicovery.service
@@ -657,14 +657,12 @@ $ systemctl status lldp-peer-dicovery.service
              ├─2994 /bin/bash /opt/puppet-files/admin-tools/rtbbgp/bin/lldp_peer_dicovery.sh
              ├─2995 /bin/bash /opt/puppet-files/admin-tools/rtbbgp/bin/lldp_peer_dicovery.sh
              └─3061 lldpcli -f keyvalue watch
-
-Warning: journal has been rotated since unit was started, output may be incomplete.
 ```
 
 ```
 $ cat /etc/systemd/system/lldp-peer-dicovery.service
 [Unit]
-Description=LLDP discovery bgp peers https://dokuwiki.rtbhouse.net/dokuwiki/doku.php?id=devel:admin:l3-sonic-migration-propsal&#peer_discovery
+Description=LLDP discovery BGP peers https://dokuwiki.rtbhouse.net/dokuwiki/doku.php?id=devel:admin:l3-sonic-migration-propsal&#peer_discovery
 After=lldpd.service
 BindsTo=lldpd.service
 
@@ -686,12 +684,12 @@ $ cat /opt/puppet-files/admin-tools/rtbbgp/bin/lldp_peer_dicovery.sh # <--- Clic
 #!/bin/bash
 
 PEERDIR="/etc/rtbbgp/peers/"
-mkdir -p $PEERDIR
+mkdir -p "$PEERDIR"
 
 ( lldpcli -f keyvalue show neighbors ; lldpcli -f keyvalue watch ) | \
 while read -r line
 do
-# lets find switch numbers, it is alweys first
+# lets find switch numbers, it is always first
 if [[ "$line" =~ chassis.name=.*([0-9])$ ]]
 then
   SWNR="${BASH_REMATCH[1]}"
@@ -701,7 +699,7 @@ if [[ "$line" =~ port.descr=Ethernet([0-9]+)$ ]]
 then
   PORTNR="${BASH_REMATCH[1]}"
 
-  for VLAN in $( cat   /proc/net/vlan/config  |  cut -f 2 -d '|' | grep -o -P '\d+' | sort | uniq ) 
+  for VLAN in $( cat /proc/net/vlan/config | cut -f 2 -d '|' | grep -o -P '\d+' | sort | uniq ) 
   do 
     peer_ipv6="fc00:0:${VLAN}:$(( ${PORTNR} + ( $SWNR * 1000 ) ))::1"
     echo "Found: SWNR=$SWNR PORTNR=$PORTNR peer_ipv6=$peer_ipv6"

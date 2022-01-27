@@ -340,7 +340,7 @@ IPv6 address formula for "fake BGP Unnumbered" interfaces was created to make as
   - SW_NUMBER: ToR switch number. (It could be beneficial to have more than two ToR switches for N+1 redundancy).
   - fc00::/7 - [Unique local addresses](https://en.wikipedia.org/wiki/Unique_local_address).
 
-Each interface has IPv6 addresses assigned by those SONIC CLI commands:
+Each interface has IPv6 addresses assigned by those SONiC CLI commands:
 
 ```
 VRF=2
@@ -348,15 +348,13 @@ SUB_PORT_VLAN_NUMBER=$((300+$VRF)) # warning, interface name length is limited t
 
 for E in ${SRV_PORTS[@]}
 do
-
   ipv6="fc00:0000:${SUB_PORT_VLAN_NUMBER}:$(( ${ETH_NUMBER} + 1000 * ${SW_NUMBER} ))::1/64"
   llipv6="fe80:0000:${SUB_PORT_VLAN_NUMBER}:$(( ${ETH_NUMBER} + 1000 * ${SW_NUMBER} ))::1/64" 
 
-  config interface ip add  Ethernet${E}.${SUB_PORT_VLAN_NUMBER} $ipv6 # subinterface creation
-  config interface vrf bind  Ethernet${E}.${SUB_PORT_VLAN_NUMBER}  Vrf${EV} # VRF bind will clear subinterface IP , we need to set ip again 
-  config interface ip add  Ethernet${E}.${SUB_PORT_VLAN_NUMBER}  $llipv6
-  config interface ip add  Ethernet${E}.${SUB_PORT_VLAN_NUMBER}  $ipv6
-
+  config interface ip add Ethernet${E}.${SUB_PORT_VLAN_NUMBER} $ipv6 # subinterface creation
+  config interface vrf bind Ethernet${E}.${SUB_PORT_VLAN_NUMBER} Vrf${EV} # VRF bind will clear subinterface IP, we need to set IP again 
+  config interface ip add Ethernet${E}.${SUB_PORT_VLAN_NUMBER} $llipv6
+  config interface ip add Ethernet${E}.${SUB_PORT_VLAN_NUMBER} $ipv6
 done
 
 ```

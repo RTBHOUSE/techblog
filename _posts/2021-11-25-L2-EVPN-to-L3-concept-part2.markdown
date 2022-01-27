@@ -514,7 +514,7 @@ Total number of neighbors 55
 
 Goals:
   - identical config on all server hardware
-  - minimal network config requirements:
+  - minimal network configuration requirements:
      - hostname 
      - IPv4 address to advertise
      - sub port interface id/number to select the network VRF
@@ -530,7 +530,7 @@ net.ifnames=0 biosdevname=0
 We accommodate config for servers that have up to eight network interfaces, any of the interfaces can be connected to the switch.
 IPv4 server address is assigned to lo:101.
 IPv6 addresses for BGP sessions etc. are assigned to 302 sub port on every physical interface by RA.
-Below you can find example config:
+Below you can find configuration example:
  
 <details>
 <summary>

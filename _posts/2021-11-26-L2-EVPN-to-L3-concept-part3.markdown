@@ -28,7 +28,7 @@ For each old L2 vlan, we deploy a pair of route reflectors. This route reflector
 
 [BGP protocol](https://www.rfc-editor.org/rfc/rfc4271.txt) is de-facto ubiquitous today. It was devised for ISP/IX/WAN but lately it started to be used on large  LANs. There are 2 modes of BGP:
 eBGP and iBGP. eBGP is used between autonomous systems. iBGP is used inside the autonomous systems. 
-We chose to implement iBGP for VLAN (in L2) / VRF (L3) and eBGP for routing between those separated internal networks. We can do that because traffic between internal networks is not large and we are filtering/firewalling it.  Predefined-AS number is used for servers and switches included in the network ( for vlan in L2 or for VRF in L3 ). This way the network becomes a fully Autonomous System.
+We chose to implement iBGP for VLAN (in L2) / VRF (L3) and eBGP for routing between those separated internal networks. We can do that because traffic between internal networks is not large and we are filtering/firewalling it. Predefined-AS number is used for servers and switches included in the network (for VLAN in L2 or for VRF in L3). This way the network becomes a fully Autonomous System.
  
 Usually iBGP requires full-mesh peering setup. With hundreds of servers in single vlan scale, full-mesh topology would be impossible one to achieve. Full mesh connection formula is:
 

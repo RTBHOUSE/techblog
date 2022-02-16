@@ -13,9 +13,9 @@ subtitle:    "Part 3 - Interconnecting 'old' flat L2 based on EVPN/VXLAN network
 
 # Motivation (for connecting 'old' BGP/EVPN network to 'new' L3-BGP-only)
     
- - Old L2 network is overgrown and ARP tables on servers become very large. Scalability reached its limits.
+ - The old L2 network is overgrown and ARP tables on servers became very large. Scalability reached its limits.
  - Migrating network architecture in place is impossible without re-deploying all servers.
- - L3-BGP-only is the most obvious choice for future growth , but a new network needs to be connected to the old one. We need to be able to keep [CLOS topology](https://en.wikipedia.org/wiki/Clos_network) (spine levels throughputs are in Tbps) to meet the latency and throughput demand.
+ - L3-BGP-only is the most obvious choice for future growth, but a new network needs a connection to the old one. We need to be able to keep [CLOS topology](https://en.wikipedia.org/wiki/Clos_network) (spine levels throughputs are in Tbps) to meet the latency and throughput demand.
 
 
 # Implementation

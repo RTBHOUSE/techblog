@@ -36,10 +36,7 @@ Usually iBGP requires full-mesh peering setup. With hundreds of servers in singl
 
 `n` is the number of devices.
 
-RR (Route Reflector) can propagate iBGP routes to peers, hence a full mesh of iBGP peers is not necessary. With network scaling-up, adding new peers will require only peering (SONiC Switches or L2 servers) with 2 x route reflectors. Both RR act as active ones (active-active solution) to provide redundancy along with multipath routes. Please be aware: route reflectors are not routers per se! They are only “reflecting” NLRIs(prefixes+attributes) to the connected clients - IP traffic is not forwarded nor passed by them directly. We use [FRR demons](https://frrouting.org/) to implement RRs:
-
-
-
+RR (Route Reflector) can propagate iBGP routes to peers, hence a full mesh of iBGP peers is not necessary. With network scaling-up, adding new peers will require only peering (SONiC Switches or L2 servers) with 2 x route reflectors. Both RR act as active ones (active-active solution) to provide redundancy along with multipath routes. Please be aware: route reflectors are not routers per se! They are only “reflecting” NLRIs (prefixes+attributes) to the connected clients - IP traffic is not forwarded nor passed by them directly. We use [FRR demons](https://frrouting.org/) to implement RRs.
 
 ### Peering route reflectors between each other
 

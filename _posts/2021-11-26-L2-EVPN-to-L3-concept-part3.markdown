@@ -153,8 +153,7 @@ ip prefix-list to-vlan2 seq 99 deny any
 {% endhighlight %}
 </details>
 
-*Each old L2-based host needs to be peered with RR*
-
+*Each old L2-based host needs to be peered with RR.*
 
 <details>
 <summary>
@@ -273,8 +272,11 @@ line vty
 
 Each server which is connected to the old big flat /12 network needs to peer with RR first, in order to be able to connect to the new L3-BGP-only-servers. When iBGP peering is established, route-reflector would advertise NLRIs to its client-peer without modifying attributes - the aim is to avoid routing loops. We have a smooth experience with a [BIRD routing daemon](https://bird.network.cz/) - configuration file is human-readable and can be easily automated using tools such as Puppet or Ansbile.
 
-Let's consider 2 different servers: one host b101 (172.16.2.101) is connected to the 'old' network with BIRD while the second host b160 (172.16.2.160) is connected to the 'new' L3-BGP-network via Sonic NOS based SONIC LEAF#1 and LEAF#2 over FRR. Let's see how b101 sees b160
+Let's consider 2 different servers:
+ - host b101 (172.16.2.101) is connected to the 'old' network with BIRD
+ - host b160 (172.16.2.160) is connected to the 'new' L3-BGP-network via SONiC NOS based SONiC LEAF#1 and LEAF#2 over FRR.
 
+Let's see how b101 sees b160.
 
 ![image alt <>](/pics/spine_leaf_diagram.png)
 

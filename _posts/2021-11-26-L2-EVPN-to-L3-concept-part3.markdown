@@ -447,10 +447,12 @@ b101:~# ip route show 172.16.2.160 <--- Click this to show more
 next-hop 172.17.0.28 address is de-facto a Vlan2-interface configured on SONiC-based LEAF#1 while
 next-hop 172.17.1.28 address is de-facto a Vlan2-interface configured on SONiC-based LEAF#2.
 
+Network path from b101 (server) to b160 (server) and the other way goes via SONiC LEAF:
+
 <details>
 <summary>
 {% highlight text %}
-#b101:~# mtr -rwnc 10 172.16.2.160 <--- Click this to show more
+b101:~# mtr -rwnc 10 172.16.2.160 <--- Click this to show more
 {% endhighlight %}
 </summary>
 {% highlight text %}
@@ -460,12 +462,10 @@ HOST: b101.creativecdn.net Loss%   Snt   Last   Avg  Best  Wrst StDev
 {% endhighlight %}
 </details>
 
-As you can see network path from b101 (server) to b160 (server) and the other way goes via Sonic leaf:
-
 <details>
 <summary>
 {% highlight text %}
-#b160:~#  mtr -rwnc 10 b101
+b160:~#  mtr -rwnc 10 b101
 {% endhighlight %}
 </summary>
 {% highlight text %}
@@ -475,20 +475,16 @@ HOST: b160.creativecdn.net Loss%   Snt   Last   Avg  Best  Wrst StDev
 {% endhighlight %}
 </details>  
 
-
-
 ## Connecting 'new' L3-BGP-switches to the RRs
 
+SONiC-enabled LEAFs (LESWs) are configured as follows.
 
-SONIC-enabled LEAFs(LESWs) are configured as follows:
-
-each odd-numbered leaf switch is connected directly via LACP portchannel to the odd-numbered spine switch e.g. LESW#1 to SPSW#1 and LESW#2 to SPSW#2 using multiple 100G interfaces, then vlan interface is assigned to the PortChannel0001 interface:
-
+Each odd-numbered leaf switch is connected directly via LACP portchannel to the odd-numbered spine switch e.g. LESW#1 to SPSW#1 and LESW#2 to SPSW#2 using multiple 100G interfaces. VLAN interface is assigned to the PortChannel0001 interface:
 
 <details>
 <summary>
 {% highlight text %}
-#LESW1# show vlan brief <--- Click this to show more
+LESW1# show vlan brief <--- Click this to show more
 {% endhighlight %}
 </summary>
 {% highlight text %}
@@ -500,11 +496,10 @@ each odd-numbered leaf switch is connected directly via LACP portchannel to the 
 {% endhighlight %}
 </details>
 
-
 <details>
 <summary>
 {% highlight text %}
-#LESW# SONIC config <--- Click this to show more
+LESW# SONIC config <--- Click this to show more
 {% endhighlight %}
 </summary>
 {% highlight text %}
@@ -536,7 +531,7 @@ config vlan member add 2 PortChannel0001
 {% endhighlight %}
 </details>
 
-On the other side(SPSW) of PortChannel we are extracting VXLAN to VLAN(Cumulus-Linux-NOS config):
+On the other side (SPSW) of PortChannel we are extracting VXLAN to VLAN (Cumulus-Linux-NOS config):
 
 ```
 auto lesw1
@@ -551,7 +546,7 @@ iface lesw1
 	bridge-vids 2 110 128
 ```
 
-You can see vlans configured on lesw1 below:
+You can see VLANs configured on lesw1 below:
 
 ```
 root@spsw1:mgmt-vrf:~# netshow vlan
@@ -571,7 +566,7 @@ VLAN    Flags     Interfaces
 
 As you can see this is **demarcation point** between old flat L2 EVPN-based network and the new L3-BGP-only based hosts.
 
-The amount of traffic is constatly growing and our setup allows scaling-up: we have interconnection consisting of 16x100Gbit/s ports coupled between each Spine and Leaf pair giving 3.2Tbit/s total BW - but please be aware that we can scale up as we grow!
+The amount of traffic is constatly growing and our setup allows scaling-up. We have interconnection consisting of 16x100Gbit/s ports coupled between each Spine and Leaf pair giving 3.2Tbit/s total BW - but please be aware that we can scale up as we grow!
 Now our biggest bandwidth-consuming DB cluster is using around 600Gbit/s at its peak and still growing! Each server of this cluster is serving flawlessly over 70Gbit/s TCP traffic!
 
 ![image alt <>](/pics/grafana_db_cluster_bandwidth.png)

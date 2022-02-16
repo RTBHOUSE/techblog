@@ -287,16 +287,6 @@ Let's see how b101 sees b160.
 {% endhighlight %}
 </summary>
 {% highlight text %}
-# vim: set ft=bird nofoldenable:
-#
-#
-#
-# File managed by puppet            <----------------------------------------
-#
-#
-#
-#
-
 router id  172.16.2.101;
 log syslog all;
 
@@ -339,7 +329,6 @@ template bgp FRR {
     export none;
   };
 }
-
 
 # frr1.ams.creativecdn.net
 protocol bgp frr1 from FRR { neighbor 172.16.63.1 as 65108; }

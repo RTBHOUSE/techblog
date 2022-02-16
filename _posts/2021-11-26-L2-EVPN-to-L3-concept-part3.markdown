@@ -11,7 +11,7 @@ subtitle:    "Part 3 - Interconnecting 'old' flat L2 based on EVPN/VXLAN network
 * This will become a table of contents (this text will be scrapped).
 {:toc}
 
-# Motivation (for connecting 'old' BGP/EVPN net to 'new' L3-BGP-only)
+# Motivation (for connecting 'old' BGP/EVPN network to 'new' L3-BGP-only)
     
  - Old L2 network is overgrown and ARP tables on servers become very large. Scalability reached its limits.
  - Migrating network architecture in place is impossible without re-deploying all servers.

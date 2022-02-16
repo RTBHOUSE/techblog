@@ -32,7 +32,9 @@ We chose to implement iBGP for VLAN (in L2) / VRF (L3) and eBGP for routing betw
  
 Usually iBGP requires full-mesh peering setup. With hundreds of servers in single VLAN scale, full-mesh topology would be impossible one to achieve. Full mesh connection formula is:
 
-```total number of connections= ( n*(n-1) )/2 where n= the number of devices.```
+```total number of connections = (n*(n-1))/2```
+
+`n` is the number of devices.
 
 RR (Route Reflector) can propagate iBGP routes to peers, hence a full mesh of iBGP peers is not necessary. With network scaling-up, adding new peers will require only peering (SONIC Switches or L2 servers) with 2x Route-Reflectors. Both RR act as active ones (active-active solution) to provide redundancy along with multipath routes. Please be aware: Route-Reflectors are not routers per se! They are only “reflecting” NLRIs(prefixes+attributes) to the connected clients - IP traffic is not forwarded nor passed by them directly. We use [FRR demons](https://frrouting.org/) to implement RRs:
 

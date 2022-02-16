@@ -22,7 +22,7 @@ subtitle:    "Part 3 - Interconnecting 'old' flat L2 based on EVPN/VXLAN network
  
 For each old L2 vlan, we deploy a pair of route reflectors. This route reflectors will relay [NLRI](https://www.inetdaemon.com/tutorials/internet/ip/routing/bgp/operation/messages/update/nlri.shtml) information between L2 servers and border SONiC L3 switches.
  
-## BGP Route reflectors
+## BGP route reflectors
 
 ![image alt <>](/pics/rr1_diagram.png)
 
@@ -36,12 +36,12 @@ Usually iBGP requires full-mesh peering setup. With hundreds of servers in singl
 
 `n` is the number of devices.
 
-RR (Route Reflector) can propagate iBGP routes to peers, hence a full mesh of iBGP peers is not necessary. With network scaling-up, adding new peers will require only peering (SONIC Switches or L2 servers) with 2x Route-Reflectors. Both RR act as active ones (active-active solution) to provide redundancy along with multipath routes. Please be aware: Route-Reflectors are not routers per se! They are only “reflecting” NLRIs(prefixes+attributes) to the connected clients - IP traffic is not forwarded nor passed by them directly. We use [FRR demons](https://frrouting.org/) to implement RRs:
+RR (Route Reflector) can propagate iBGP routes to peers, hence a full mesh of iBGP peers is not necessary. With network scaling-up, adding new peers will require only peering (SONiC Switches or L2 servers) with 2 x route reflectors. Both RR act as active ones (active-active solution) to provide redundancy along with multipath routes. Please be aware: route reflectors are not routers per se! They are only “reflecting” NLRIs(prefixes+attributes) to the connected clients - IP traffic is not forwarded nor passed by them directly. We use [FRR demons](https://frrouting.org/) to implement RRs:
 
 
 
 
-### Peering route-reflectors between each other
+### Peering route reflectors between each other
 
 <details>
 <summary>

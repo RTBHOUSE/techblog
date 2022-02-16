@@ -20,7 +20,7 @@ subtitle:    "Part 3 - Interconnecting 'old' flat L2 based on EVPN/VXLAN network
 
 # Implementation
  
-For each old L2 vlan, we deploy a pair of route reflectors. This route reflectors will relay [NLRI](https://www.inetdaemon.com/tutorials/internet/ip/routing/bgp/operation/messages/update/nlri.shtml) information between L2 servers and border SONIC L3 switches.
+For each old L2 vlan, we deploy a pair of route reflectors. This route reflectors will relay [NLRI](https://www.inetdaemon.com/tutorials/internet/ip/routing/bgp/operation/messages/update/nlri.shtml) information between L2 servers and border SONiC L3 switches.
  
 ## BGP Route reflectors
 

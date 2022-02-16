@@ -30,7 +30,7 @@ For each old L2 vlan, we deploy a pair of route reflectors. This route reflector
 eBGP and iBGP. eBGP is used between autonomous systems. iBGP is used inside the autonomous systems. 
 We chose to implement iBGP for VLAN (in L2) / VRF (L3) and eBGP for routing between those separated internal networks. We can do that because traffic between internal networks is not large and we are filtering/firewalling it. Predefined-AS number is used for servers and switches included in the network (for VLAN in L2 or for VRF in L3). This way the network becomes a fully Autonomous System.
  
-Usually iBGP requires full-mesh peering setup. With hundreds of servers in single vlan scale, full-mesh topology would be impossible one to achieve. Full mesh connection formula is:
+Usually iBGP requires full-mesh peering setup. With hundreds of servers in single VLAN scale, full-mesh topology would be impossible one to achieve. Full mesh connection formula is:
 
 ```total number of connections= ( n*(n-1) )/2 where n= the number of devices.```
 

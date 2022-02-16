@@ -78,7 +78,7 @@ line vty
 
 *There needs to be intra-connection between pair of two route-reflectors to avoid split-brain case.*
 
-### Peering RRs with SONIC LEAF gateways:
+### Peering RRs with SONiC LEAF gateways:
 
 <details>
 <summary>

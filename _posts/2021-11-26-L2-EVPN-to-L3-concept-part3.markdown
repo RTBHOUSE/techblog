@@ -585,7 +585,7 @@ Flags: A - active, I - inactive, Up - up, Dw - Down, N/A - not available,
 
 We are connecting spine and leaf with multiple 100G ports - currently each leaf is connected via 16x100G ports but the sky is the limit and de-facto switchport numbers!
 Interconnect can be done at any level: e.g. leaf to leaf, leaf to spine and leaf to super-spine - possible point of connection: anywhere (L2/L3 boundary).
-No bottle-neck due to CLOS spine-leaf architecture - A CLOS/Spine-Leaf or "fat tree" architecture features multiple connections between interconnection switches (spine switches) and access switches (leaf switches) to support high-performance computer clustering. In addition to flattening and scaling out Layer 2 networks at the edge, it also creates a nonblocking, low-latency fabric.
+No bottle-neck due to CLOS spine-leaf architecture. A CLOS/Spine-Leaf or "fat tree" architecture features multiple connections between interconnection switches (spine switches) and access switches (leaf switches) to support high-performance computer clustering. In addition to flattening and scaling out Layer 2 networks at the edge, it also creates a nonblocking, low-latency fabric.
 
 ## ECMP
 

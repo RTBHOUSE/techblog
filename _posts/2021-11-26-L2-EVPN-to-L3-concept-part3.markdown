@@ -20,7 +20,7 @@ subtitle:    "Part 3 - Interconnecting 'old' flat L2 based on EVPN/VXLAN network
 
 # Implementation
  
-For each old L2 vlan, we deploy a pair of route reflectors. This route reflectors will relay [NLRI](https://www.inetdaemon.com/tutorials/internet/ip/routing/bgp/operation/messages/update/nlri.shtml) information between L2 servers and border SONiC L3 switches.
+For each old L2 VLAN, we deploy a pair of route reflectors. These route reflectors will relay [NLRI](https://www.inetdaemon.com/tutorials/internet/ip/routing/bgp/operation/messages/update/nlri.shtml) information between L2 servers and border SONiC L3 switches.
  
 ## BGP route reflectors
 
@@ -340,7 +340,7 @@ protocol bgp frr2 from FRR { neighbor 172.16.63.2 as 65108; }
 <details>
 <summary>
 {% highlight text %}
-# (ams)root@b101:~# birdc show protocol <--- click here to show more
+(ams)root@b101:~# birdc show protocol <--- click here to show more
 {% endhighlight %}
 </summary>
 {% highlight text %}
@@ -353,13 +353,10 @@ frr2       BGP        ---        up     2021-09-12    Established
 {% endhighlight %}
 </details>
 
-As you can see each 'old' server has a 2 iBGP sessions and it's receiving over 722 NLRIs(prefixes+attributes):
-
-
 <details>
 <summary>
 {% highlight text %}
-# b101# birdc show route count <--- click here to show more
+b101# birdc show route count <--- click here to show more
 {% endhighlight %}
 </summary>
 {% highlight text %}
@@ -370,14 +367,16 @@ Total: 722 of 722 routes for 165 networks in 2 tables
 {% endhighlight %}
 </details>
 
-These 722 prefixes include predominantely /32 IPv4 routes - for each 'new' L3-BGP-based-server is annoucing exactly 1x IPv4 addr towards RRs.
+As you can see each 'old' server has a 2 iBGP sessions and it's receiving over 722 NLRIs (prefixes+attributes).
+
+These 722 prefixes include predominantely /32 IPv4 routes - for each 'new' L3-BGP-based-server is annoucing exactly 1 x IPv4 addr towards RRs.
 
 BGP-table (also known as BGP topology table, BGP RIB) on 'old' servers is looking like this:
 
 <details>
 <summary>
 {% highlight text %}
-# b101:~# birdc show route all for 172.16.2.160 <--- click here to show more
+b101:~# birdc show route all for 172.16.2.160 <--- click here to show more
 {% endhighlight %}
 </summary>
 {% highlight text %}
@@ -430,13 +429,12 @@ Table master4:
 {% endhighlight %}
 </details>
 
-FIB-table(Forwarding Information Base) on the 'old' servers is looking like this:
-
+FIB-table (Forwarding Information Base) on the 'old' servers is looking like this:
 
 <details>
 <summary>
 {% highlight text %}
-#b101:~# ip route show 172.16.2.160 <--- Click this to show more
+b101:~# ip route show 172.16.2.160 <--- Click this to show more
 {% endhighlight %}
 </summary>
 {% highlight text %}
@@ -446,8 +444,8 @@ FIB-table(Forwarding Information Base) on the 'old' servers is looking like this
 {% endhighlight %}
 </details>
 
-next-hop 172.17.0.28 address is de-facto a Vlan2-interface configured on SONIC-based LEAF#1 while
-next-hop 172.17.1.28 address is de-facto a Vlan2-interface configured on SONIC-based LEAF#2
+next-hop 172.17.0.28 address is de-facto a Vlan2-interface configured on SONiC-based LEAF#1 while
+next-hop 172.17.1.28 address is de-facto a Vlan2-interface configured on SONiC-based LEAF#2.
 
 <details>
 <summary>

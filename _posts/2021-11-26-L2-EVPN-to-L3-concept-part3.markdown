@@ -117,7 +117,7 @@ ip prefix-list to-l3 seq 99 deny any
 {% endhighlight %}
 </details>
 
-*Each L3-BGP-enabled SONIC switch needs to be connected to the RR. We are using BGP-L3 peer group specifically for this purpose.*
+*Each L3-BGP-enabled SONiC switch needs to be connected to the RR. We are using BGP-L3 peer group specifically for this purpose.*
 
 ### Peering old L2 hosts with RR:
 <details>

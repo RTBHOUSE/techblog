@@ -601,12 +601,12 @@ Hashing is computed with **5-tuple:**
 4. source port
 5. destination port
 
-You can read more about hashing in excellent Broadcom document [here](https://docs.broadcom.com/doc/12358326)
+You can read more about hashing in excellent Broadcom document [here](https://docs.broadcom.com/doc/12358326).
 
 Please note that BGP offers add-on called ADD-PATH described in [RFC 7911](https://datatracker.ietf.org/doc/html/rfc7911) which is confusing - there terms are two different things!
-RTBHouse combines ADD-PATH and ECMP at the very same time - this two features help us leverage inter-DC network bottlenecks!
+RTB House combines ADD-PATH and ECMP at the very same time - this two features help us leverage inter-DC network bottlenecks!
 
-Below example output of one IP(/32 prefix) which is fully-reachable over 6x next-hops:
+Below is example output of one IP (/32 prefix) which is fully-reachable over six next-hops:
 
 ```
 172.16.64.31 proto bgp metric 20 

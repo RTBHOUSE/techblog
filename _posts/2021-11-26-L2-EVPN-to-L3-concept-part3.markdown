@@ -804,30 +804,25 @@ Read thread: on  Write thread: on  FD used: 30
 {% endhighlight %}
 </details>
 
-
-
-
-
 ![image alt <>](/pics/ecmp_example.png)
 
-##  Arp-refresher
+##  ARP refresher
 
-Due to the unremedied SONIC interal bug we've implemeted workaround bash script called arp-refresher.sh which is starting every 2 minutes in the background via crontab.
-Stale arp is not refreshed by SONIC - it takes a hike from bridge(PortChannel) - then the servers in the 'old' network are having issues connecting to the L3-BGP-only servers
-
+Due to the unremedied SONiC interal bug we've implemeted workaround bash script called `arp-refresher.sh` which is started every 2 minutes in the background via crontab.
+Stale ARP is not refreshed by SONiC - it takes a hike from bridge (PortChannel) - then the servers in the "old" network are having issues connecting to the L3-BGP-only servers
 
 ```
-# root@lesw1:~# show arp | grep 172.16.21.116
-# 172.16.21.116   0c:c4:7a:ea:7e:6e  -                2
-# root@lesw1:~# show mac | grep -i 0c:c4:7a:ea:7e:6e
+root@lesw1:~# show arp | grep 172.16.21.116
+172.16.21.116   0c:c4:7a:ea:7e:6e  -                2
+root@lesw1:~# show mac | grep -i 0c:c4:7a:ea:7e:6e
 ```
 
-As you can see from the syslog arp-refresher is doing it's job properly:
+As you can see from the syslog ARP refresher is doing it's job properly:
 
 <details>
 <summary>
 {% highlight text %}
-#lesw1:~# tail -f /var/log/syslog | grep arp  <--- Click this to show more
+lesw1:~# tail -f /var/log/syslog | grep arp  <--- Click this to show more
 {% endhighlight %}
 </summary>
 {% highlight text %}
@@ -868,12 +863,12 @@ Sep 21 15:06:03.522982 lesw1 NOTICE /opt/rtb-network-sonic/share/bin/arp_refresh
 {% endhighlight %}
 </details>
 
-You can see the source-code of arp-refresher below:
+You can see the source code of `arp-refresher.sh` below:
 
 <details>
 <summary>
 {% highlight text %}
-# cat opt/rtb-network-sonic/share/bin# cat arp_refresher.sh 
+/opt/rtb-network-sonic/share/bin# cat arp_refresher.sh 
 {% endhighlight %}
 </summary>
 {% highlight text %}
@@ -883,25 +878,21 @@ You can see the source-code of arp-refresher below:
 export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/bin/X11
 exec &> >(while read line; do logger -t "$0"  -i -- "$line"; done)
 
-
-for VRF in $(ip -br link show type vrf | cut -f 1 -d ' ' ) 
+for VRF in $(ip -br link show type vrf | cut -f 1 -d ' ') 
 do
-
-  ip -s -4 n show vrf "$VRF"  | grep -e STALE -e REACHABLE  | while read LINE 
+  ip -s -4 n show vrf "$VRF" | grep -e STALE -e REACHABLE | while read LINE 
   do
     # if several arp refreshes fail then arp should be removed,
     # without this ip is blocked and can not be moved to routing table
     if echo "$LINE" | grep -q -P 'STALE$'
     then
-    	IP=$( echo "$LINE" | cut -f 1 -d ' ' )
-    	DEV=$( echo "$LINE" | cut -f 3 -d ' ' )
+    	IP=$(echo "$LINE" | cut -f 1 -d ' ')
+    	DEV=$(echo "$LINE" | cut -f 3 -d ' ')
         echo "STALE($IP): ip -4 neigh del $IP dev $DEV"
     	ip -4 neigh del "$IP" dev "$DEV" 
     	continue
     fi
-      
-    
-    
+
     # https://git.kernel.org/pub/scm/network/iproute2/iproute2.git/tree/ip/ipneigh.c#n213
     # https://unix.stackexchange.com/questions/473919/what-is-the-fifth-coloum-in-the-output-of-ip-stat-neighbour-show-stand-for/474006
     
@@ -914,7 +905,7 @@ do
     # we set base_reachable_time_ms to 400000 while default equals 1800000 while cumulus-linux 1080000
     if  [[ $AGE_MIN -ge $(( 400000 / 1000 )) ]]
     then
-       IP=$( echo "$LINE" | cut -f 1 -d ' ' )
+       IP=$(echo "$LINE" | cut -f 1 -d ' ')
        echo "AGE($AGE_MIN):  ip vrf exec $VRF arping -c 1 -w 0.1  $IP"
        ip vrf exec "$VRF" arping -q -c 1 -w 0.1 "$IP"
     fi

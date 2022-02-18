@@ -914,4 +914,4 @@ done
 {% endhighlight %}
 </details>
 
-This interconnection setup is working fine for over 2 months. We have critical services deployed on the servers that are prone to any distruption or latency-spikes in the network. After implementing arp-refresher SONIC image without any changes works well for the setup described above on Broadcom Tomahawk, Tomahawk II and Trident III ASICs.
+This interconnection setup is working fine for over 2 months. We have critical services deployed on the servers that are prone to any distruption or latency-spikes in the network. After implementing ARP refresher SONiC works well for the setup described above on the Broadcom Tomahawk, Tomahawk II and Trident III ASICs.

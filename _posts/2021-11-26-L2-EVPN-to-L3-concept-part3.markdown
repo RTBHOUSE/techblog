@@ -639,7 +639,7 @@ frr2.ams.creativecdn.net(172.16.63.2)                              4      65108 
 {% endhighlight %}
 </details>
 
-FRR conf snippet related to route reflectors connection through Spine portchannel
+FRR configuration snippet related to route reflectors connection through Spine portchannel:
 
 <details>
 <summary>
@@ -717,12 +717,12 @@ end
 {% endhighlight %}
 </details>
 
-BGP neighbour output with route-reflector looking from SONIC point-of-view:
+BGP neighbour output with route-reflector looking from SONiC point-of-view:
 
 <details>
 <summary>
 {% highlight text %}
-#LESW# show ip bgp vrf Vrf2 neighbour 172.16.63.1 <--- Click this to show more
+LESW# show ip bgp vrf Vrf2 neighbour 172.16.63.1 <--- Click this to show more
 {% endhighlight %}
 </summary>
 {% highlight text %}

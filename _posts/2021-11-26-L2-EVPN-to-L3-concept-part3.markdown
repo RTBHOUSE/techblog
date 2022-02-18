@@ -594,11 +594,12 @@ Packet forwarding to a single destination takes place over multiple "best paths"
 The ECMP leverages modified Dijkstra's algorithm to search for the shortest path, and uses the modulo-n hashing method in the selection of the delivery path. 
 To prevent out of order packets, ECMP hashing is done on a per-flow basis, which means that all packets with the same source and destination IP addresses and the same source and destination ports always hash to the same next hop thus traffic will be uniformly spread across next-hops(load-balancing effect).
 Hashing is computed with **5-tuple:**
-1. src IP addr
-2. dst IP addr
+
+1. source IP address
+2. destination IP address
 3. protocol
-4. src port
-5. dst port
+4. source port
+5. destination port
 
 You can read more about hashing in excellent Broadcom document [here](https://docs.broadcom.com/doc/12358326)
 

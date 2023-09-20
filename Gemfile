@@ -1,7 +1,12 @@
 source 'https://rubygems.org'
 
 require 'json'
-require 'open-uri'
-versions = JSON.parse(open('https://pages.github.com/versions.json').read)
+require 'net/http'
+versions =
+  begin
+    JSON.parse(Net::HTTP.get(URI('https://pages.github.com/versions.json')))
+  rescue SocketError
+    { 'github-pages' => 228 } # This needs manual update once in a while.
+  end
 
 gem 'github-pages', versions['github-pages']

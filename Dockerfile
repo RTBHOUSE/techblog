@@ -12,14 +12,14 @@
 #
 # THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-FROM ruby:2.7.4 as jekyll
+FROM ruby:2.7.4 as github-pages
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
     git \
     && rm -rf /var/lib/apt/lists/*
 
-# used in the jekyll-server image, which is FROM this image
+# used in the github-pages-server image, which is FROM this image
 COPY docker-entrypoint.sh /usr/local/bin/
 RUN chmod 755 /usr/local/bin/docker-entrypoint.sh
 
@@ -34,7 +34,7 @@ ENTRYPOINT [ "jekyll" ]
 CMD [ "--help" ]
 
 # build from the image we just built with different metadata
-FROM jekyll as jekyll-serve
+FROM github-pages as github-pages-serve
 
 EXPOSE 4000
 

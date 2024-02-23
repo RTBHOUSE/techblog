@@ -72,3 +72,21 @@ Clearly, the results are similar to those of our real-life schema, with our solu
 In order to have clear view on your particular scenario, we encourage to benchmark against your own schemas, as the results may vary depending on the structure of records, especially if you leverage the union type in your schemas. Generally, we may assume that records consisting of many nested records with fairly limited number of fields will perform better than larger and relatively “flat” records.
 
 To recap, if you process a lot of Avro records in your scenario its worth to give avro-fastserde a try, as you may expect a significant boost of processing performance.
+
+
+# Update 2020-12: The avro-fastserde library is now supported by LinkedIn
+
+We are glad to announce that our in-house developed [avro-fastserde](https://techblog.rtbhouse.com/2017/04/18/fast-avro/) library, which cleverly boosts the performance of [Apache Avro](https://avro.apache.org) (de)serialization, was [recognized](https://www.infoq.com/presentations/recommendation-massive-data/) (around 32:00) and successfully adopted by LinkedIn and from now on is maintained by them, with some cooperation from our side, as part of their [avro-util](https://github.com/linkedin/avro-util) set of libraries. LinkedIn's fork is the superset of the original implementation and provides nice features and improvements:
+
+* improved memory footprint
+* implemented object reuse during deserialization 
+* logcial types support
+* compatibility layer for various Apache Avro versions
+* automatic compile phase classpath resolution for generated code
+* ... and many more 
+
+We strongly encourage users to migrate, since the original has been deprecated and will not be supported anymore. 
+
+Happy (de)serializing!
+
+

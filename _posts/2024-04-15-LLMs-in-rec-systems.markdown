@@ -17,7 +17,7 @@ This blog post aims to explore the recent advancements in leveraging LLMs for re
 
 The evolution of recommender systems has seen a shift from early, simple techniques, such as factorization machines for CTR prediction or collaborative filtering for product recommendation, to more sophisticated Deep Learning approaches, such as deep & cross networks, two-tower models, and many others. Can the next wave, consisting of transformers and LLMs, be employed in the recommendation space?
 
-![](/pics/LLM-in-rec-1.jpg)
+![](/pics/LLM-in-rec-1.png)
 *Evolution of recommendation systems model architectures*
 
 ## Recommendation systems pipeline
@@ -25,7 +25,7 @@ The evolution of recommender systems has seen a shift from early, simple techniq
 Typically, a recommender system follows a multi-stage process: initially, a broad set of potential items is narrowed down using simpler models or rule-based filters. This step significantly reduces the pool of candidates to a manageable size, upon which more complex models can be applied for the final selection of recommendations. However, the introduction of LLMs presents a transformative approach. LLMs have the capacity to bypass the traditional multi-tiered filtering and ranking process by directly generating recommendations from the entire pool of items. This capability allows for considering the full spectrum of options in one step, potentially streamlining the recommendation process and enhancing the relevance of the output.
 
 <p>
-<img src="/pics/LLM-in-rec-2.jpg" style="width: 80%"/>
+<img src="/pics/LLM-in-rec-2.png" style="width: 80%"/>
 <em>Ranking stages of traditional recommendation pipeline. Image source: <a href="https://arxiv.org/abs/2006.09684">https://arxiv.org/abs/2006.09684</a></em>
 </p>
 
@@ -40,7 +40,7 @@ When dealing with large amounts of possible items, assigning each item a separat
 Addressing the construction of item ID sequence structure in a way that avoids spurious correlations presents an intriguing challenge. Simple numerical sequencing or just item titles might induce unintended associations. Alternatives like hierarchical indexing, based on user-item interactions or semantic attributes, offer a more nuanced approach to categorizing items, potentially enhancing the relevance and precision of recommendations.
 
 <p>
-<img src="/pics/LLM-in-rec-4.jpg"/>
+<img src="/pics/LLM-in-rec-4.png"/>
 <em>Visualisation of item ID generation. Image source: <a href="https://llmrecsys.github.io/">https://llmrecsys.github.io/</a></em>
 </p>
 
@@ -50,7 +50,7 @@ The advantage of using natural language as the interface for recommendation syst
 
 
 <p>
-<img src="/pics/LLM-in-rec-7.jpg"/>
+<img src="/pics/LLM-in-rec-7.png"/>
 <em>LLMs using language interface can solve many different recommendation tasks using the same setup. Image source: <a href="https://arxiv.org/abs/2307.02046">https://arxiv.org/abs/2307.02046</a></em>
 </p>
 
@@ -60,7 +60,7 @@ Integrating multiple types of data, such as images or videos, into recommendatio
 
 
 <p>
-<img src="/pics/LLM-in-rec-6.jpg"/>
+<img src="/pics/LLM-in-rec-6.png"/>
 <em>One can easily adjust an LLM pipeline to work with images when generating recommendations. Image source: <a href="https://arxiv.org/abs/2305.14302">https://arxiv.org/abs/2305.14302</a></em>
 </p>
 
@@ -70,7 +70,7 @@ Integrating multiple types of data, such as images or videos, into recommendatio
 How effective are pre-trained LLMs at handling recommendation tasks without any task-specific fine-tuning, known as zero-shot inference? Given their extensive pre-training on vast datasets, one might expect them to achieve noteworthy results even in unfamiliar tasks. However, when evaluated using standard automated metrics, their performance typically falls short of models that have been fine-tuned on specific recommendation tasks. Interestingly, this changes when the quality of recommendations is assessed based on human preferences. In such cases, LLMs often excel, likely benefiting from techniques like Reinforcement Learning from Human Feedback (RLHF) or Direct Preference Optimization (DPO), which fine-tune the models to align more closely with human judgment.
 
 <p>
-<img src="/pics/LLM-in-rec-3.jpg" style="width: 30%"/>
+<img src="/pics/LLM-in-rec-3.png" style="width: 30%"/>
 <em>One can try to apply LLM for recommendation in a zero-shot manner. Image source: <a href="https://arxiv.org/abs/2304.10149">https://arxiv.org/abs/2304.10149</a></em>
 </p>
 
@@ -85,7 +85,7 @@ Beyond acting as independent recommendation engines, Large Language Models (LLMs
 These diverse applications showcase the adaptability of LLMs, making them promising assets across the spectrum of recommendation system design and implementation.
 
 <p>
-<img src="/pics/LLM-in-rec-5.jpg" style="width: 30%"/>
+<img src="/pics/LLM-in-rec-5.png" style="width: 60%"/>
 <em> LLM can also be used alongside the recommendation system pipeline as a feature encoder, scoring/ranking function, conversational recommender, or pipeline controller. Image source: <a href="https://arxiv.org/abs/2306.05817">https://arxiv.org/abs/2306.05817</a></em>
 </p>
 
